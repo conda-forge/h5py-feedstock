@@ -19,7 +19,6 @@ source:
 
 build:
   number: 1
-  skip: true  # [win]
 
 requirements:
   build:
