@@ -18,7 +18,7 @@ source:
     - h5py_tests_old_test_file.py.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
