@@ -34,7 +34,7 @@ requirements:
     - numpy x.x
     - hdf5
     - six
-    - unittest2    #[py26]
+    - unittest2    # [py26]
 
 test:
   imports:
