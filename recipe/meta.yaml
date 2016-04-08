@@ -16,6 +16,7 @@ source:
     # https://github.com/h5py/h5py/pull/697
     #
     - h5py_tests_old_test_file.py.patch
+    - h5py_win_setup_build.py.patch
 
 build:
   number: 1
