@@ -5,7 +5,7 @@ Home: http://www.h5py.org/
 
 Package license: BSD 3-Clause
 
-Feedstock license: BSD
+Feedstock license: BSD 3-Clause
 
 Summary: Read and write HDF5 files from Python.
 
@@ -69,6 +69,7 @@ Terminology
 
 Current build status
 ====================
+
 Linux: [![Circle CI](https://circleci.com/gh/conda-forge/h5py-feedstock.svg?style=svg)](https://circleci.com/gh/conda-forge/h5py-feedstock)
 OSX: [![TravisCI](https://travis-ci.org/conda-forge/h5py-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/h5py-feedstock) 
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/h5py-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/h5py-feedstock/branch/master)
