@@ -19,13 +19,13 @@ source:
     - h5py_win_setup_build.py.patch
 
 build:
-  number: 3
+  number: 4
 
 requirements:
   build:
     - python
     - numpy x.x
-    - hdf5 1.8.15*
+    - hdf5 1.8.17*
     - cython
     - six
     - pkgconfig
@@ -33,7 +33,7 @@ requirements:
   run:
     - python
     - numpy x.x
-    - hdf5 1.8.15*
+    - hdf5 1.8.17*
     - six
     - unittest2    # [py26]
 
