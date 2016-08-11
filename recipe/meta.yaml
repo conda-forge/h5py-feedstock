@@ -19,7 +19,7 @@ source:
     - h5py_win_setup_build.py.patch
 
 build:
-  number: 5
+  number: 6
 
 requirements:
   build:
@@ -44,6 +44,7 @@ test:
 about:
   home: http://www.h5py.org/
   license: BSD 3-Clause
+  license_file: licenses/license.txt
   summary: Read and write HDF5 files from Python.
 
 extra:
