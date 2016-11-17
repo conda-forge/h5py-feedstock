@@ -17,13 +17,17 @@ source:
     #
     - h5py_tests_old_test_file.py.patch
     - h5py_win_setup_build.py.patch
+    # Fix flakiness on Python 3
+    # https://github.com/h5py/h5py/pull/776
+    - h5py_py3_flakiness.patch
 
 build:
-  number: 6
+  number: 7
 
 requirements:
   build:
     - python
+    - setuptools
     - numpy x.x
     - hdf5 1.8.17|1.8.17.*
     - cython
@@ -50,3 +54,4 @@ about:
 extra:
   recipe-maintainers:
     - jakirkham
+    - pitrou
