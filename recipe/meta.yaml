@@ -43,3 +43,4 @@ extra:
   recipe-maintainers:
     - jakirkham
     - pitrou
+    - tacaswell
