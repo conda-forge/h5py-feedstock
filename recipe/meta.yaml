@@ -25,6 +25,7 @@ requirements:
   run:
     - python
     - numpy x.x
+    # when this is changed also update bld.bat
     - hdf5 1.8.17|1.8.17.*
     - six
     - unittest2    # [py26]
