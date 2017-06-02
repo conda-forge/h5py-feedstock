@@ -10,14 +10,14 @@ source:
   sha256: fff3a878c6adfa1b4f5c30b558a295d52dd4fee9174128c626ef416dec1b536b
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
     - python
     - setuptools
     - numpy x.x
-    - hdf5 1.8.17|1.8.17.*
+    - hdf5 1.8.18|1.8.18.*
     - cython
     - six
     - pkgconfig
@@ -26,7 +26,7 @@ requirements:
     - python
     - numpy x.x
     # when this is changed also update bld.bat
-    - hdf5 1.8.17|1.8.17.*
+    - hdf5 1.8.18|1.8.18.*
     - six
     - unittest2    # [py26]
 
