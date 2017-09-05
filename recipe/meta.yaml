@@ -18,7 +18,8 @@ requirements:
     - python
     - setuptools
     - numpy 1.8.*  # [not (win and (py35 or py36))]
-    - numpy 1.9.*  # [win and (py35 or py36)]
+    - numpy 1.9.*  # [win and py35]
+    - numpy 1.11.*  # [win and py36]
     - hdf5 1.8.18|1.8.18.*
     - cython
     - six
@@ -27,7 +28,8 @@ requirements:
   run:
     - python
     - numpy >=1.8  # [not (win and (py35 or py36))]
-    - numpy >=1.9  # [win and (py35 or py36)]
+    - numpy >=1.9  # [win and py35]
+    - numpy >=1.11  # [win and py36]
     # when this is changed also update bld.bat
     - hdf5 1.8.18|1.8.18.*
     - six
