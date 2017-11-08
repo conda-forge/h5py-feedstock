@@ -6,12 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  fn: h5py-{{ version }}.tar.gz
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -20,7 +19,7 @@ requirements:
     - numpy 1.8.*  # [not (win and (py35 or py36))]
     - numpy 1.9.*  # [win and py35]
     - numpy 1.11.*  # [win and py36]
-    - hdf5 1.8.18|1.8.18.*
+    - hdf5 1.10.1
     - cython
     - six
     - pkgconfig
@@ -31,7 +30,7 @@ requirements:
     - numpy >=1.9  # [win and py35]
     - numpy >=1.11  # [win and py36]
     # when this is changed also update bld.bat
-    - hdf5 1.8.18|1.8.18.*
+    - hdf5 1.10.1
     - six
     - unittest2    # [py26]
 
