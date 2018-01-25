@@ -33,6 +33,7 @@ requirements:
     - hdf5 1.10.1
     - six
     - unittest2    # [py26]
+    - pyreadline  # [win]
 
 test:
   imports:
