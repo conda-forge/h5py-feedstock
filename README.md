@@ -14,14 +14,16 @@ Summary: Read and write HDF5 files from Python.
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/h5py-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/h5py-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/h5py-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/h5py-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/h5py-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/h5py-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/h5py-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/h5py-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/h5py-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/h5py-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/h5py-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/h5py-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/h5py/badges/version.svg)](https://anaconda.org/conda-forge/h5py)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/h5py/badges/downloads.svg)](https://anaconda.org/conda-forge/h5py)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-h5py-green.svg)](https://anaconda.org/conda-forge/h5py) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/h5py.svg)](https://anaconda.org/conda-forge/h5py) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/h5py.svg)](https://anaconda.org/conda-forge/h5py) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/h5py.svg)](https://anaconda.org/conda-forge/h5py) |
 
 Installing h5py
 ===============
