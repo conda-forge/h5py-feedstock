@@ -10,7 +10,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -20,7 +20,7 @@ requirements:
     - python
     - setuptools
     - numpy
-    - hdf5
+    - hdf5 1.10.2
     - cython
     - six
     - pkgconfig
@@ -28,7 +28,7 @@ requirements:
   run:
     - python
     - {{ pin_compatible('numpy') }}
-    - hdf5
+    - hdf5 1.10.2
     - six
     - unittest2    # [py26 or py27]
     - pyreadline  # [win]
