@@ -1,5 +1,9 @@
 c_compiler:
 - vs2015
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
 hdf5:
 - 1.10.2
 numpy:
