@@ -1,21 +1,20 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
 c_compiler:
-- vs2015
+- toolchain_c
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
-hdf5:
-- 1.10.2
+macos_machine:
+- x86_64-apple-darwin13.4.0
+macos_min_version:
+- '10.9'
 numpy:
-- '1.11'
+- '1.9'
 pin_run_as_build:
-  hdf5:
-    max_pin: x.x.x
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- '3.5'
-zip_keys:
-- - python
-  - c_compiler
+- '3.7'
