@@ -8,9 +8,12 @@ osx_image: xcode6.4
 
 env:
   matrix:
-    - CONFIG=osx_python2.7
-    - CONFIG=osx_python3.6
-    - CONFIG=osx_python3.7
+    - CONFIG=osx_c_compilerclangpython2.7
+    - CONFIG=osx_c_compilerclangpython3.6
+    - CONFIG=osx_c_compilerclangpython3.7
+    - CONFIG=osx_c_compilertoolchain_cpython2.7
+    - CONFIG=osx_c_compilertoolchain_cpython3.6
+    - CONFIG=osx_c_compilertoolchain_cpython3.7
 
   global:
     # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.
