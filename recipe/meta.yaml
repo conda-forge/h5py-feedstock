@@ -7,9 +7,12 @@ package:
 source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
   sha256: eae41382be28b7264824450ce343dd625f972bedaaa3b0cced284986aabcbaee
+  patches:
+    # drop when https://github.com/h5py/h5py/pull/1099 is merged.
+    - backport_1099.patch
 
 build:
-  number: 1003
+  number: 1004
 
 requirements:
   build:
@@ -18,14 +21,14 @@ requirements:
     - python
     - pip
     - numpy
-    - hdf5 1.10.2
+    - hdf5
     - cython
     - six
     - pkgconfig
   run:
     - python
     - {{ pin_compatible('numpy') }}
-    - hdf5 1.10.2
+    - hdf5
     - six
     - unittest2  # [py26 or py27]
     - pyreadline  # [win]
@@ -36,12 +39,13 @@ test:
 
 about:
   home: http://www.h5py.org/
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_file: licenses/license.txt
-  summary: Read and write HDF5 files from Python.
+  summary: Read and write HDF5 files from Python
 
 extra:
   recipe-maintainers:
     - jakirkham
     - pitrou
     - tacaswell
+    - ocefpaf
