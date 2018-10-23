@@ -7,10 +7,14 @@ channel_sources:
 channel_targets:
 - conda-forge gcc7
 docker_image:
-- conda/c3i-linux-64
+- condaforge/linux-anvil-comp7
+hdf5:
+- 1.10.3
 numpy:
 - '1.9'
 pin_run_as_build:
+  hdf5:
+    max_pin: x.x.x
   python:
     min_pin: x.x
     max_pin: x.x
