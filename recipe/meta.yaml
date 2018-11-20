@@ -1,6 +1,9 @@
 {% set version = "2.8.0" %}
 {% set build = 1005 %}
 
+# mpi must be defined for conda-smithy lint
+{% set mpi = mpi or 'nompi' %}
+
 package:
   name: h5py
   version: {{ version }}
