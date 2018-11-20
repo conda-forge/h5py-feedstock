@@ -8,18 +8,16 @@ channel_targets:
 - conda-forge gcc7
 docker_image:
 - condaforge/linux-anvil-comp7
-hdf5:
-- 1.10.3
+mpi:
+- openmpi
 numpy:
 - '1.9'
 pin_run_as_build:
-  hdf5:
-    max_pin: x.x.x
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- '3.7'
+- '2.7'
 zip_keys:
 - - c_compiler
   - channel_sources

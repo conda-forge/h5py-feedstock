@@ -1,23 +1,26 @@
+build_number_decrement:
+- '1000'
 c_compiler:
-- vs2015
+- toolchain_c
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
-hdf5:
-- 1.10.3
+docker_image:
+- condaforge/linux-anvil
 mpi:
 - nompi
 numpy:
-- '1.11'
+- '1.9'
 pin_run_as_build:
-  hdf5:
-    max_pin: x.x.x
   python:
     min_pin: x.x
     max_pin: x.x
 python:
 - '3.7'
 zip_keys:
-- - python
-  - c_compiler
+- - c_compiler
+  - channel_sources
+  - channel_targets
+  - docker_image
+  - build_number_decrement

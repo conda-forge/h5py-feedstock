@@ -6,6 +6,8 @@ channel_targets:
 - conda-forge main
 hdf5:
 - 1.10.3
+mpi:
+- nompi
 numpy:
 - '1.11'
 pin_run_as_build:
