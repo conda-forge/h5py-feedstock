@@ -39,6 +39,7 @@ requirements:
     - pip
     - numpy
     - {{ mpi }}  # [mpi != 'nompi']
+    - mpi4py  # [mpi != 'nompi']
     - hdf5 * {{ mpi_prefix }}_*
     - cython
     - six
@@ -47,6 +48,7 @@ requirements:
     - python
     - {{ pin_compatible('numpy') }}
     - {{ mpi }}  # [mpi != 'nompi']
+    - mpi4py  # [mpi != 'nompi']
     # re-implement pin_run_as_build
     # which we had to disable to workaround conda-build bug 3264
     - {{ pin_compatible('hdf5', max_pin='x.x.x') }}
