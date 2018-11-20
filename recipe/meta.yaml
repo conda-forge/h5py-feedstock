@@ -1,4 +1,5 @@
 {% set version = "2.8.0" %}
+{% set build = 1005 %}
 
 package:
   name: h5py
@@ -12,7 +13,23 @@ source:
     - backport_1099.patch
 
 build:
-  number: 1004
+  number: {{ build }}
+  # Use track_features to express a preference for
+  # non-mpi variant
+  {% if mpi != 'nompi' %}
+  track_features:
+    - h5py_{{ mpi }}
+  {% set mpi_prefix = "mpi_" + mpi %}
+  {% else %}
+  {% set mpi_prefix = "nompi" %}
+  {% endif %}
+  # add build string so packages can depend on
+  # mpi or nompi variants
+  # dependencies:
+  # `pkg * mpi_mpich_*` for mpich
+  # `hdf5 * mpi_*` for any mpi
+  # `hdf5 * nompi_*` for no mpi
+  string: "{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}"
 
 requirements:
   build:
@@ -21,14 +38,16 @@ requirements:
     - python
     - pip
     - numpy
-    - hdf5
+    - {{ mpi }}  # [mpi != 'nompi']
+    - hdf5 * {{ mpi_prefix }}_*
     - cython
     - six
     - pkgconfig
   run:
     - python
     - {{ pin_compatible('numpy') }}
-    - hdf5
+    - {{ mpi }}  # [mpi != 'nompi']
+    - {{ pin_compatible('hdf5', max_pin='x.x.x') }} {{ mpi_prefix }}_*
     - six
     - unittest2  # [py26 or py27]
     - pyreadline  # [win]
