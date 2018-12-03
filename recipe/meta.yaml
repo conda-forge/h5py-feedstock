@@ -12,7 +12,7 @@ source:
     - backport_1099.patch
 
 build:
-  number: 1004
+  number: 1005
 
 requirements:
   build:
