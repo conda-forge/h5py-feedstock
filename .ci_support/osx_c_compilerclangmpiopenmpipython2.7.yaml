@@ -8,6 +8,8 @@ channel_sources:
 - conda-forge/label/gcc7,defaults
 channel_targets:
 - conda-forge gcc7
+hdf5:
+- 1.10.4
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
