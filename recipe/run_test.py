@@ -1,3 +1,9 @@
+import os
+
+os.environ['OMPI_MCA_plm'] = 'isolated'
+os.environ['OMPI_MCA_btl_vader_single_copy_mechanism'] = 'none'
+os.environ['OMPI_MCA_rmaps_base_oversubscribe'] = 'yes'
+
 import h5py
 import h5py._conv
 import h5py._errors
