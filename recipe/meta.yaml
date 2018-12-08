@@ -4,6 +4,11 @@
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
 
+{% if mpi == 'nompi' %}
+# prefer nompi builds via a build number offset
+{% set build = build + 100 %}
+{% endif %}
+
 package:
   name: h5py
   version: {{ version }}
@@ -14,11 +19,7 @@ source:
 
 build:
   number: {{ build }}
-  # Use track_features to express a preference for
-  # non-mpi variant
   {% if mpi != 'nompi' %}
-  track_features:
-    - h5py_{{ mpi }}
   {% set mpi_prefix = "mpi_" + mpi %}
   {% else %}
   {% set mpi_prefix = "nompi" %}
