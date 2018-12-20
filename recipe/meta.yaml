@@ -1,4 +1,4 @@
-{% set version = "2.8.0" %}
+{% set version = "2.9.0" %}
 
 package:
   name: h5py
@@ -6,13 +6,13 @@ package:
 
 source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
-  sha256: eae41382be28b7264824450ce343dd625f972bedaaa3b0cced284986aabcbaee
+  sha256: 49d593c07a3a4cb87ed421f502e34368b98282a4ac6d4388379aab80b11c7924
   patches:
     # drop when https://github.com/h5py/h5py/pull/1099 is merged.
     - backport_1099.patch
 
 build:
-  number: 1005
+  number: 1000
 
 requirements:
   build:
