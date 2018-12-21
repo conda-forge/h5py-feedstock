@@ -1,5 +1,5 @@
-{% set version = "2.8.0" %}
-{% set build = 1005 %}
+{% set version = "2.9.0" %}
+{% set build = 1001 %}
 
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
@@ -10,10 +10,7 @@ package:
 
 source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
-  sha256: eae41382be28b7264824450ce343dd625f972bedaaa3b0cced284986aabcbaee
-  patches:
-    # drop when https://github.com/h5py/h5py/pull/1099 is merged.
-    - backport_1099.patch
+  sha256: 49d593c07a3a4cb87ed421f502e34368b98282a4ac6d4388379aab80b11c7924
 
 build:
   number: {{ build }}
@@ -74,3 +71,4 @@ extra:
     - pitrou
     - tacaswell
     - ocefpaf
+    - minrk
