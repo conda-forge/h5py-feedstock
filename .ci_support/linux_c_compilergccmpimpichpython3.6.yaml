@@ -10,6 +10,8 @@ docker_image:
 - condaforge/linux-anvil-comp7
 hdf5:
 - 1.10.4
+mpi:
+- mpich
 numpy:
 - '1.9'
 pin_run_as_build:
