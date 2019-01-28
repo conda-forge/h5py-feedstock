@@ -1,5 +1,5 @@
 {% set version = "2.9.0" %}
-{% set build = 1001 %}
+{% set build = 1002 %}
 
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
@@ -30,7 +30,7 @@ build:
   # `pkg * mpi_mpich_*` for mpich
   # `hdf5 * mpi_*` for any mpi
   # `hdf5 * nompi_*` for no mpi
-  string: "{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}"
+  string: "{{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}"
 
 requirements:
   build:
