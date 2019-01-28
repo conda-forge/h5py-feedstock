@@ -1,5 +1,6 @@
 # This file was generated automatically from conda-smithy. To update this configuration,
 # update the conda-forge.yml and/or the recipe/meta.yaml.
+# -*- mode: yaml -*-
 
 language: generic
 
@@ -9,24 +10,15 @@ osx_image: xcode9.4
 
 env:
   matrix:
-    - CONFIG=osx_c_compilerclangmpimpichpython2.7
-    - CONFIG=osx_c_compilerclangmpimpichpython3.6
-    - CONFIG=osx_c_compilerclangmpimpichpython3.7
-    - CONFIG=osx_c_compilerclangmpinompipython2.7
-    - CONFIG=osx_c_compilerclangmpinompipython3.6
-    - CONFIG=osx_c_compilerclangmpinompipython3.7
-    - CONFIG=osx_c_compilerclangmpiopenmpipython2.7
-    - CONFIG=osx_c_compilerclangmpiopenmpipython3.6
-    - CONFIG=osx_c_compilerclangmpiopenmpipython3.7
-    - CONFIG=osx_c_compilertoolchain_cmpimpichpython2.7
-    - CONFIG=osx_c_compilertoolchain_cmpimpichpython3.6
-    - CONFIG=osx_c_compilertoolchain_cmpimpichpython3.7
-    - CONFIG=osx_c_compilertoolchain_cmpinompipython2.7
-    - CONFIG=osx_c_compilertoolchain_cmpinompipython3.6
-    - CONFIG=osx_c_compilertoolchain_cmpinompipython3.7
-    - CONFIG=osx_c_compilertoolchain_cmpiopenmpipython2.7
-    - CONFIG=osx_c_compilertoolchain_cmpiopenmpipython3.6
-    - CONFIG=osx_c_compilertoolchain_cmpiopenmpipython3.7
+    - CONFIG=osx_mpimpichpython2.7
+    - CONFIG=osx_mpimpichpython3.6
+    - CONFIG=osx_mpimpichpython3.7
+    - CONFIG=osx_mpinompipython2.7
+    - CONFIG=osx_mpinompipython3.6
+    - CONFIG=osx_mpinompipython3.7
+    - CONFIG=osx_mpiopenmpipython2.7
+    - CONFIG=osx_mpiopenmpipython3.6
+    - CONFIG=osx_mpiopenmpipython3.7
 
   global:
     # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.
@@ -36,7 +28,7 @@ env:
 before_install:
     # Fast finish the PR.
     - |
-      (curl https://raw.githubusercontent.com/conda-forge/conda-forge-ci-setup-feedstock/branch2.0/recipe/conda_forge_ci_setup/ff_ci_pr_build.py | \
+      (curl https://raw.githubusercontent.com/conda-forge/conda-forge-ci-setup-feedstock/master/recipe/conda_forge_ci_setup/ff_ci_pr_build.py | \
           python - -v --ci "travis" "${TRAVIS_REPO_SLUG}" "${TRAVIS_BUILD_NUMBER}" "${TRAVIS_PULL_REQUEST}") || exit 1
 
     # Remove homebrew.
@@ -65,7 +57,7 @@ install:
       echo "Configuring conda."
       source /Users/travis/miniconda3/bin/activate root
 
-      conda install -n root -c conda-forge --quiet --yes conda-forge-ci-setup=2
+      conda install -n root -c conda-forge --quiet --yes conda-forge-ci-setup=2 conda-build
       setup_conda_rc ./ ./recipe ./.ci_support/${CONFIG}.yaml
 
       source run_conda_forge_build_setup
@@ -77,5 +69,5 @@ install:
 script:
   # generate the build number clobber
   - make_build_number ./ ./recipe ./.ci_support/${CONFIG}.yaml
-  - conda build ./recipe -m ./.ci_support/${CONFIG}.yaml --clobber-file ./.ci_support/clobber_${CONFIG}.yaml
+  -  conda build ./recipe -m ./.ci_support/${CONFIG}.yaml --clobber-file ./.ci_support/clobber_${CONFIG}.yaml
   - upload_package ./ ./recipe ./.ci_support/${CONFIG}.yaml
