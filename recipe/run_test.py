@@ -35,5 +35,4 @@ assert have_mpi == should_have_mpi, "Expected mpi=%r, got %r" % (should_have_mpi
 import h5py.tests.old.test_file
 delattr(h5py.tests.old.test_file.TestDrivers, 'test_mpio')
 
-from sys import exit
-exit(0) if h5py.run_tests().wasSuccessful() else exit(1)
+h5py.run_tests()

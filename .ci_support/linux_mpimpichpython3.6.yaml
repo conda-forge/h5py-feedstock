@@ -1,9 +1,11 @@
 c_compiler:
 - gcc
+c_compiler_version:
+- '7'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge main
+- conda-forge dev
 docker_image:
 - condaforge/linux-anvil-comp7
 hdf5:
@@ -11,7 +13,7 @@ hdf5:
 mpi:
 - mpich
 numpy:
-- '1.9'
+- '1.14'
 pin_run_as_build:
   python:
     min_pin: x.x
