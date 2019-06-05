@@ -59,6 +59,8 @@ requirements:
     - pyreadline  # [win]
 
 test:
+  requires:
+    - pytest
   imports:
     - h5py
 
