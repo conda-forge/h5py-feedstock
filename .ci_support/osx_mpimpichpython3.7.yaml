@@ -7,7 +7,7 @@ c_compiler_version:
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge main
+- conda-forge dev
 hdf5:
 - 1.10.4
 macos_machine:

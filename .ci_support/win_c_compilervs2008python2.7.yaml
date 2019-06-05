@@ -3,7 +3,7 @@ c_compiler:
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge main
+- conda-forge dev
 hdf5:
 - 1.10.4
 mpi:
