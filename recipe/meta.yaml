@@ -1,5 +1,5 @@
 {% set version = "2.10.0.dev" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
@@ -43,7 +43,8 @@ requirements:
     - numpy
     - {{ mpi }}  # [mpi != 'nompi']
     - mpi4py  # [mpi != 'nompi']
-    - hdf5 * {{ mpi_prefix }}_*
+    - hdf5 * {{ mpi_prefix }}_*  # [mpi != 'nompi']
+    - hdf5  # [mpi == 'nompi']
     - cython
     - six
     - pkgconfig
@@ -52,8 +53,8 @@ requirements:
     - {{ pin_compatible('numpy') }}
     - {{ mpi }}  # [mpi != 'nompi']
     - mpi4py  # [mpi != 'nompi']
-    # hdf5 >=1.10.4 has run_exports
-    - hdf5
+    - hdf5 * {{ mpi_prefix }}_*  # [mpi != 'nompi']
+    - hdf5  # [mpi == 'nompi']
     - six
     - unittest2  # [py26 or py27]
     - pyreadline  # [win]
