@@ -1,5 +1,7 @@
 c_compiler:
 - gcc
+c_compiler_version:
+- '7'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -11,7 +13,7 @@ hdf5:
 mpi:
 - mpich
 numpy:
-- '1.9'
+- '1.14'
 pin_run_as_build:
   python:
     min_pin: x.x
