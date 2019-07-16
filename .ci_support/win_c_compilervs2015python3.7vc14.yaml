@@ -1,11 +1,11 @@
 c_compiler:
-- vs2008
+- vs2015
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge dev
 hdf5:
-- 1.10.4
+- 1.10.5
 mpi:
 - nompi
 numpy:
@@ -14,8 +14,13 @@ pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
+  vc:
+    max_pin: x
 python:
-- '2.7'
+- '3.7'
+vc:
+- '14'
 zip_keys:
 - - python
+  - vc
   - c_compiler
