@@ -41,6 +41,9 @@ requirements:
     - numpy
     - {{ mpi }}  # [mpi != 'nompi']
     - mpi4py  # [mpi != 'nompi']
+    # need to list hdf5 twice to get version pinning from conda_build_config
+    # and build pinning from {{ mpi_prefix }}
+    - hdf5
     - hdf5 * {{ mpi_prefix }}_*
     - cython
     - six
