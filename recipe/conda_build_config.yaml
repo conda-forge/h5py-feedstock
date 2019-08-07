@@ -2,5 +2,3 @@ mpi:
   - nompi
   - mpich  # [not win]
   - openmpi  # [not win]
-hdf5:
-  - 1.10.4
