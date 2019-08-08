@@ -76,7 +76,6 @@ about:
 extra:
   recipe-maintainers:
     - jakirkham
-    - pitrou
     - tacaswell
     - ocefpaf
     - minrk
