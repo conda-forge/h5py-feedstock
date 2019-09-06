@@ -1,5 +1,5 @@
-{% set version = "2.9.0" %}
-{% set build = 1004 %}
+{% set version = "2.10.0" %}
+{% set build = 0 %}
 
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
@@ -15,7 +15,7 @@ package:
 
 source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
-  sha256: 49d593c07a3a4cb87ed421f502e34368b98282a4ac6d4388379aab80b11c7924
+  sha256: 2a8369f74d079dbfe35aebbf56b565a5d2e7bea6d3cdba682b4d456128a23b5e
   patches:
     # https://github.com/h5py/h5py/pull/1186
     - hdf5-1.10.5-test-skip.patch
