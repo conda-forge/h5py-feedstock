@@ -16,9 +16,7 @@ package:
 source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
   sha256: 2a8369f74d079dbfe35aebbf56b565a5d2e7bea6d3cdba682b4d456128a23b5e
-  patches:
-    # https://github.com/h5py/h5py/pull/1186
-    - hdf5-1.10.5-test-skip.patch
+
 
 build:
   number: {{ build }}
