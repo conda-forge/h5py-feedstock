@@ -277,5 +277,6 @@ Feedstock Maintainers
 * [@jakirkham](https://github.com/jakirkham/)
 * [@minrk](https://github.com/minrk/)
 * [@ocefpaf](https://github.com/ocefpaf/)
+* [@scopatz](https://github.com/scopatz/)
 * [@tacaswell](https://github.com/tacaswell/)
 
