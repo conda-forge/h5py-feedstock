@@ -32,4 +32,4 @@ have_mpi = h5py.get_config().mpi
 assert have_mpi == should_have_mpi, "Expected mpi=%r, got %r" % (should_have_mpi, have_mpi)
 
 from sys import exit
-exit(0) if h5py.run_tests().wasSuccessful() else exit(1)
+exit(h5py.run_tests())
