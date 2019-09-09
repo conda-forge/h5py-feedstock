@@ -61,10 +61,10 @@ requirements:
     - six
     - unittest2  # [py26 or py27]
     - pyreadline  # [win]
-  test:
-    - pytest
 
 test:
+  requires:
+    - pytest
   imports:
     - h5py
 
