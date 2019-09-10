@@ -27,6 +27,8 @@ build:
   {% else %}
   {% set mpi_prefix = "nompi" %}
   {% endif %}
+  # There are dependency conflicts for Python 2 on Windows
+  skip: True  # [win and py<30]
   # add build string so packages can depend on
   # mpi or nompi variants
   # dependencies:
