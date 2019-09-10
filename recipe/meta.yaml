@@ -18,6 +18,7 @@ source:
   sha256: 2a8369f74d079dbfe35aebbf56b565a5d2e7bea6d3cdba682b4d456128a23b5e
   patches:
     - remove_test.patch
+    - remove_read_direct_chunk_test.patch  # [py < 30]
 
 build:
   number: {{ build }}
