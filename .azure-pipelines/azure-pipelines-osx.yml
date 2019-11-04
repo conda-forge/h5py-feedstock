@@ -19,6 +19,9 @@ jobs:
       osx_mpimpichpython3.7:
         CONFIG: osx_mpimpichpython3.7
         UPLOAD_PACKAGES: True
+      osx_mpimpichpython3.8:
+        CONFIG: osx_mpimpichpython3.8
+        UPLOAD_PACKAGES: True
       osx_mpinompipython2.7:
         CONFIG: osx_mpinompipython2.7
         UPLOAD_PACKAGES: True
@@ -28,6 +31,9 @@ jobs:
       osx_mpinompipython3.7:
         CONFIG: osx_mpinompipython3.7
         UPLOAD_PACKAGES: True
+      osx_mpinompipython3.8:
+        CONFIG: osx_mpinompipython3.8
+        UPLOAD_PACKAGES: True
       osx_mpiopenmpipython2.7:
         CONFIG: osx_mpiopenmpipython2.7
         UPLOAD_PACKAGES: True
@@ -36,6 +42,9 @@ jobs:
         UPLOAD_PACKAGES: True
       osx_mpiopenmpipython3.7:
         CONFIG: osx_mpiopenmpipython3.7
+        UPLOAD_PACKAGES: True
+      osx_mpiopenmpipython3.8:
+        CONFIG: osx_mpiopenmpipython3.8
         UPLOAD_PACKAGES: True
 
   steps:
@@ -94,7 +103,7 @@ jobs:
       source activate base
       export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
       upload_package ./ ./recipe ./.ci_support/${CONFIG}.yaml
-    displayName: Upload recipe
+    displayName: Upload package
     env:
       BINSTAR_TOKEN: $(BINSTAR_TOKEN)
     condition: not(eq(variables['UPLOAD_PACKAGES'], 'False'))
