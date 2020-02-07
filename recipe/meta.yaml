@@ -27,7 +27,7 @@ source:
 
 build:
   number: {{ build }}
-  skip: True  # [win and py<30]
+  skip: True  # [py2k]
   {% if mpi != 'nompi' %}
   {% set mpi_prefix = "mpi_" + mpi %}
   {% else %}
