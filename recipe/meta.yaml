@@ -18,12 +18,6 @@ package:
 source:
   url: https://github.com/h5py/h5py/archive/{{ commit }}.tar.gz
   sha256: 997496f5f6c237958399ee65605561fa05eaade2125aeb26fc132c515eb17871
-  patches:
-    # - patches/remove_test.patch
-    - patches/remove_read_direct_chunk_test.patch  # [py < 30]
-    # see https://github.com/h5py/h5py/issues/1244
-    #     https://github.com/h5py/h5py/pull/1325
-    # - patches/ppc64le_test.patch
 
 build:
   number: {{ build }}
