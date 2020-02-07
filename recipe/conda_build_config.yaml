@@ -3,4 +3,4 @@ mpi:
   - mpich  # [not win]
   - openmpi  # [not win]
 channel_targets:
-  - conda-forge dev
+  - conda-forge h5py_dev

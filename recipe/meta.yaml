@@ -1,5 +1,5 @@
-{% set version = "2.10.0.dev" %}
-{% set build = 2 %}
+{% set version = "2.11.0.dev" %}
+{% set build = 0 %}
 
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
@@ -9,7 +9,7 @@
 {% set build = build + 100 %}
 {% endif %}
 
-{% set commit = "c0c0b122d03a66a00ac81fd0394f2f4ead0d89ac" %}
+{% set commit = "84d7b7e58177e2c1b63ae37115bb4a88f6a90049" %}
 
 package:
   name: h5py
@@ -17,11 +17,11 @@ package:
 
 source:
   url: https://github.com/h5py/h5py/archive/{{ commit }}.tar.gz
-  sha256: 9ed1ac1038e1452a381e5f16f5529b10150092475926a522b76e62461a31691e
+  sha256: 997496f5f6c237958399ee65605561fa05eaade2125aeb26fc132c515eb17871
 
 build:
   number: {{ build }}
-  skip: True  # [win and vc<14]
+  skip: True  # [py2k]
   {% if mpi != 'nompi' %}
   {% set mpi_prefix = "mpi_" + mpi %}
   {% else %}
@@ -44,27 +44,27 @@ requirements:
     - numpy
     - {{ mpi }}  # [mpi != 'nompi']
     - mpi4py  # [mpi != 'nompi']
-    - hdf5 * {{ mpi_prefix }}_*  # [mpi != 'nompi']
-    - hdf5  # [mpi == 'nompi']
-    - cython
-    - six
+    - hdf5
+    - hdf5 * {{ mpi_prefix }}_*
+    - cython >=0.25
     - pkgconfig
+    - cached-property
   run:
     - python
     - {{ pin_compatible('numpy') }}
     - {{ mpi }}  # [mpi != 'nompi']
     - mpi4py  # [mpi != 'nompi']
-    - hdf5 * {{ mpi_prefix }}_*  # [mpi != 'nompi']
-    - hdf5  # [mpi == 'nompi']
-    - six
-    - unittest2  # [py26 or py27]
+    - hdf5
     - pyreadline  # [win]
+    - cached-property
 
 test:
   requires:
     - pytest
   imports:
     - h5py
+  commands:
+    - pytest -rxXs -k "not (test_mpio or test_mpi_atomic or test_close_multiple_mpio_driver)" --pyargs h5py
 
 about:
   home: http://www.h5py.org/

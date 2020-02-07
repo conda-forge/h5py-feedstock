@@ -3,11 +3,11 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '4'
+- '9'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge dev
+- conda-forge h5py_dev
 hdf5:
 - 1.10.5
 macos_machine:
@@ -15,7 +15,7 @@ macos_machine:
 macos_min_version:
 - '10.9'
 mpi:
-- openmpi
+- nompi
 numpy:
 - '1.14'
 pin_run_as_build:
@@ -23,4 +23,4 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- '2.7'
+- '3.8'

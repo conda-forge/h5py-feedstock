@@ -1,13 +1,9 @@
 c_compiler:
-- gcc
-c_compiler_version:
-- '7'
+- vs2015
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge dev
-docker_image:
-- condaforge/linux-anvil-comp7
+- conda-forge h5py_dev
 hdf5:
 - 1.10.5
 mpi:
@@ -19,4 +15,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- '2.7'
+- '3.7'
+zip_keys:
+- - python
+  - c_compiler

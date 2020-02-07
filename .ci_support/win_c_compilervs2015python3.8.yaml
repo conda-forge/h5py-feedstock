@@ -3,7 +3,7 @@ c_compiler:
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge dev
+- conda-forge h5py_dev
 hdf5:
 - 1.10.5
 mpi:
@@ -14,13 +14,8 @@ pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
-  vc:
-    max_pin: x
 python:
-- '3.7'
-vc:
-- '14'
+- '3.8'
 zip_keys:
 - - python
-  - vc
   - c_compiler
