@@ -10,10 +10,6 @@ jobs:
   strategy:
     maxParallel: 8
     matrix:
-      linux_mpimpichpython2.7:
-        CONFIG: linux_mpimpichpython2.7
-        UPLOAD_PACKAGES: True
-        DOCKER_IMAGE: condaforge/linux-anvil-comp7
       linux_mpimpichpython3.6:
         CONFIG: linux_mpimpichpython3.6
         UPLOAD_PACKAGES: True
@@ -26,10 +22,6 @@ jobs:
         CONFIG: linux_mpimpichpython3.8
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_mpinompipython2.7:
-        CONFIG: linux_mpinompipython2.7
-        UPLOAD_PACKAGES: True
-        DOCKER_IMAGE: condaforge/linux-anvil-comp7
       linux_mpinompipython3.6:
         CONFIG: linux_mpinompipython3.6
         UPLOAD_PACKAGES: True
@@ -40,10 +32,6 @@ jobs:
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
       linux_mpinompipython3.8:
         CONFIG: linux_mpinompipython3.8
-        UPLOAD_PACKAGES: True
-        DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_mpiopenmpipython2.7:
-        CONFIG: linux_mpiopenmpipython2.7
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
       linux_mpiopenmpipython3.6:
