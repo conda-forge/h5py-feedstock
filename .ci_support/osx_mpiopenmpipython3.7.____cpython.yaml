@@ -9,7 +9,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 hdf5:
-- 1.10.5
+- 1.10.6
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
