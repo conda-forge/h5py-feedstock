@@ -13,7 +13,7 @@ steps:
     CONFIG: linux_aarch64_mpimpichnumpy1.16python3.6.____cpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
-    BINSTAR_TOKEN: 
+    BINSTAR_TOKEN:
       from_secret: BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
@@ -39,7 +39,7 @@ steps:
     CONFIG: linux_aarch64_mpimpichnumpy1.16python3.7.____cpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
-    BINSTAR_TOKEN: 
+    BINSTAR_TOKEN:
       from_secret: BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
@@ -65,7 +65,7 @@ steps:
     CONFIG: linux_aarch64_mpimpichnumpy1.16python3.8.____cpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
-    BINSTAR_TOKEN: 
+    BINSTAR_TOKEN:
       from_secret: BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
@@ -91,7 +91,7 @@ steps:
     CONFIG: linux_aarch64_mpimpichnumpy1.18python3.6.____73_pypy
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
-    BINSTAR_TOKEN: 
+    BINSTAR_TOKEN:
       from_secret: BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
@@ -117,7 +117,7 @@ steps:
     CONFIG: linux_aarch64_mpinompinumpy1.16python3.6.____cpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
-    BINSTAR_TOKEN: 
+    BINSTAR_TOKEN:
       from_secret: BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
@@ -143,7 +143,7 @@ steps:
     CONFIG: linux_aarch64_mpinompinumpy1.16python3.7.____cpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
-    BINSTAR_TOKEN: 
+    BINSTAR_TOKEN:
       from_secret: BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
@@ -169,7 +169,7 @@ steps:
     CONFIG: linux_aarch64_mpinompinumpy1.16python3.8.____cpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
-    BINSTAR_TOKEN: 
+    BINSTAR_TOKEN:
       from_secret: BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
@@ -195,7 +195,7 @@ steps:
     CONFIG: linux_aarch64_mpinompinumpy1.18python3.6.____73_pypy
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
-    BINSTAR_TOKEN: 
+    BINSTAR_TOKEN:
       from_secret: BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
@@ -221,7 +221,7 @@ steps:
     CONFIG: linux_aarch64_mpiopenmpinumpy1.16python3.6.____cpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
-    BINSTAR_TOKEN: 
+    BINSTAR_TOKEN:
       from_secret: BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
@@ -247,7 +247,7 @@ steps:
     CONFIG: linux_aarch64_mpiopenmpinumpy1.16python3.7.____cpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
-    BINSTAR_TOKEN: 
+    BINSTAR_TOKEN:
       from_secret: BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
@@ -273,7 +273,7 @@ steps:
     CONFIG: linux_aarch64_mpiopenmpinumpy1.16python3.8.____cpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
-    BINSTAR_TOKEN: 
+    BINSTAR_TOKEN:
       from_secret: BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
@@ -299,7 +299,7 @@ steps:
     CONFIG: linux_aarch64_mpiopenmpinumpy1.18python3.6.____73_pypy
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
-    BINSTAR_TOKEN: 
+    BINSTAR_TOKEN:
       from_secret: BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
