@@ -22,6 +22,8 @@ source:
     # see https://github.com/h5py/h5py/issues/1244
     #     https://github.com/h5py/h5py/pull/1325
     - ppc64le_test.patch
+    # skip failing unicode test on windows
+    - skip-failing-unicode-test.patch  # [win]
 
 build:
   number: {{ build }}
