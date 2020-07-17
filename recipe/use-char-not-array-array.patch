@@ -1,5 +1,5 @@
 diff --git a/h5py/h5d.pyx b/h5py/h5d.pyx
-index 7dca1854..a6608495 100644
+index 7dca1854..f367d245 100644
 --- a/h5py/h5d.pyx
 +++ b/h5py/h5d.pyx
 @@ -15,7 +15,6 @@ include "config.pxi"
@@ -15,12 +15,12 @@ index 7dca1854..a6608495 100644
              cdef uint32_t filters
              cdef hsize_t read_chunk_nbytes
 -            cdef array.array data = array.array('B')
-+            cdef char * data = NULL
++            cdef char *data = NULL
 +            cdef bytes ret
  
              dset_id = self.id
              dxpl_id = pdefault(dxpl)
-@@ -485,14 +485,17 @@ cdef class DatasetID(ObjectID):
+@@ -485,15 +485,19 @@ cdef class DatasetID(ObjectID):
                  offset = <hsize_t*>emalloc(sizeof(hsize_t)*rank)
                  convert_tuple(offsets, offset, rank)
                  H5Dget_chunk_storage_size(dset_id, offset, &read_chunk_nbytes)
@@ -41,6 +41,9 @@ index 7dca1854..a6608495 100644
                  if space_id:
                      H5Sclose(space_id)
  
+-            return filters, bytes(data)
++            return filters, ret
++
 diff --git a/h5py/tests/test_dataset.py b/h5py/tests/test_dataset.py
 index b5ba988c..cecbc370 100644
 --- a/h5py/tests/test_dataset.py
@@ -86,16 +89,17 @@ index 6abc101f..6dc6ca54 100644
          with h5py.File(fname, 'r') as f:
              df2 = f['test']
 diff --git a/setup_build.py b/setup_build.py
-index c0e9a28c..6015eaba 100644
+index c0e9a28c..10f0fa20 100644
 --- a/setup_build.py
 +++ b/setup_build.py
-@@ -46,7 +46,8 @@ COMPILER_SETTINGS = {
+@@ -46,7 +46,9 @@ COMPILER_SETTINGS = {
     'libraries'      : ['hdf5', 'hdf5_hl'],
     'include_dirs'   : [localpath('lzf')],
     'library_dirs'   : [],
 -   'define_macros'  : [('H5_USE_16_API', None)]
 +   'define_macros'  : [('H5_USE_16_API', None),
 +                       ('NPY_NO_DEPRECATED_API', 0),
++                      ]
  }
  
  if sys.platform.startswith('win'):
