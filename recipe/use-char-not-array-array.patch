@@ -1,26 +1,26 @@
 diff --git a/h5py/h5d.pyx b/h5py/h5d.pyx
-index 88b2a05b..22a428c5 100644
+index 7dca1854..a6608495 100644
 --- a/h5py/h5d.pyx
 +++ b/h5py/h5d.pyx
-@@ -18,7 +18,6 @@ include "config.pxi"
- from collections import namedtuple
- from ._objects cimport pdefault
- from numpy cimport ndarray, import_array, PyArray_DATA
+@@ -15,7 +15,6 @@ include "config.pxi"
+ # Compile-time imports
+ from _objects cimport pdefault
+ from numpy cimport ndarray, import_array, PyArray_DATA, NPY_WRITEABLE
 -from cpython cimport array
- from .utils cimport  check_numpy_read, check_numpy_write, \
-                      convert_tuple, convert_dims, emalloc, efree
- from .h5t cimport TypeID, typewrap, py_create
-@@ -478,7 +477,8 @@ cdef class DatasetID(ObjectID):
+ from utils cimport  check_numpy_read, check_numpy_write, \
+                     convert_tuple, emalloc, efree
+ from h5t cimport TypeID, typewrap, py_create
+@@ -471,7 +470,8 @@ cdef class DatasetID(ObjectID):
              cdef int rank
              cdef uint32_t filters
              cdef hsize_t read_chunk_nbytes
 -            cdef array.array data = array.array('B')
-+            cdef char *data = NULL
++            cdef char * data = NULL
 +            cdef bytes ret
  
              dset_id = self.id
              dxpl_id = pdefault(dxpl)
-@@ -492,18 +492,21 @@ cdef class DatasetID(ObjectID):
+@@ -485,14 +485,17 @@ cdef class DatasetID(ObjectID):
                  offset = <hsize_t*>emalloc(sizeof(hsize_t)*rank)
                  convert_tuple(offsets, offset, rank)
                  H5Dget_chunk_storage_size(dset_id, offset, &read_chunk_nbytes)
@@ -41,16 +41,11 @@ index 88b2a05b..22a428c5 100644
                  if space_id:
                      H5Sclose(space_id)
  
--            return filters, bytes(data)
-+            return filters, ret
- 
-     IF HDF5_VERSION >= (1, 10, 5):
- 
 diff --git a/h5py/tests/test_dataset.py b/h5py/tests/test_dataset.py
-index 537d6318..0dc9022f 100644
+index b5ba988c..cecbc370 100644
 --- a/h5py/tests/test_dataset.py
 +++ b/h5py/tests/test_dataset.py
-@@ -1247,7 +1247,7 @@ class TestVlen(BaseDataset):
+@@ -1061,7 +1061,7 @@ class TestVlen(BaseDataset):
          self.assertArrayEqual(ds[1], np.arange(0))
          self.assertArrayEqual(ds[2], np.array([1, 2, 3]))
          self.assertArrayEqual(ds[1], np.arange(0))
@@ -59,7 +54,7 @@ index 537d6318..0dc9022f 100644
          self.assertArrayEqual(ds[0], np.arange(5))
          self.assertArrayEqual(ds[1], np.arange(4))
          ds[0:2] = np.array([np.arange(3), np.arange(3)])
-@@ -1276,7 +1276,7 @@ class TestVlen(BaseDataset):
+@@ -1090,7 +1090,7 @@ class TestVlen(BaseDataset):
          self.assertArrayEqual(ds[0], np.array([1, 1]))
          self.assertArrayEqual(ds[1], np.array([1]))
          self.assertArrayEqual(ds[2], np.array([1, 2, 3]))
@@ -68,7 +63,7 @@ index 537d6318..0dc9022f 100644
          self.assertArrayEqual(ds[0], np.arange(5))
          self.assertArrayEqual(ds[1], np.arange(4))
          ds[0:2] = np.array([np.array([0.1, 1.2, 2.2]),
-@@ -1289,7 +1289,7 @@ class TestVlen(BaseDataset):
+@@ -1103,7 +1103,7 @@ class TestVlen(BaseDataset):
          ds = self.f.create_dataset('vlen', (2, 2), dtype=dt)
          ds[0, 0] = np.arange(1)
          ds[:, :] = np.array([[np.arange(3), np.arange(2)],
@@ -78,10 +73,10 @@ index 537d6318..0dc9022f 100644
                               [np.arange(2), np.arange(2)]])
  
 diff --git a/h5py/tests/test_dtype.py b/h5py/tests/test_dtype.py
-index 63ae90d2..b540b37c 100644
+index 6abc101f..6dc6ca54 100644
 --- a/h5py/tests/test_dtype.py
 +++ b/h5py/tests/test_dtype.py
-@@ -113,7 +113,7 @@ class TestVlen(TestCase):
+@@ -116,7 +116,7 @@ class TestVlen(TestCase):
  
          with h5py.File(fname, 'w') as f:
              df1 = f.create_dataset('test', (len(arr1),), dtype=dt1)
@@ -91,17 +86,16 @@ index 63ae90d2..b540b37c 100644
          with h5py.File(fname, 'r') as f:
              df2 = f['test']
 diff --git a/setup_build.py b/setup_build.py
-index de78d17d..e53eea28 100644
+index c0e9a28c..6015eaba 100644
 --- a/setup_build.py
 +++ b/setup_build.py
-@@ -43,7 +43,9 @@ COMPILER_SETTINGS = {
+@@ -46,7 +46,8 @@ COMPILER_SETTINGS = {
     'libraries'      : ['hdf5', 'hdf5_hl'],
     'include_dirs'   : [localpath('lzf')],
     'library_dirs'   : [],
 -   'define_macros'  : [('H5_USE_16_API', None)]
 +   'define_macros'  : [('H5_USE_16_API', None),
 +                       ('NPY_NO_DEPRECATED_API', 0),
-+                      ]
  }
  
  if sys.platform.startswith('win'):
