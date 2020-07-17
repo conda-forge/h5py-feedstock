@@ -24,6 +24,7 @@ source:
     - ppc64le_test.patch
     # skip failing unicode test on windows
     - skip-failing-unicode-test.patch  # [win]
+    - use-char-not-array-array.patch
 
 build:
   number: {{ build }}
