@@ -1,0 +1,105 @@
+diff --git a/h5py/h5d.pyx b/h5py/h5d.pyx
+index 7dca1854..f367d245 100644
+--- a/h5py/h5d.pyx
++++ b/h5py/h5d.pyx
+@@ -15,7 +15,6 @@ include "config.pxi"
+ # Compile-time imports
+ from _objects cimport pdefault
+ from numpy cimport ndarray, import_array, PyArray_DATA, NPY_WRITEABLE
+-from cpython cimport array
+ from utils cimport  check_numpy_read, check_numpy_write, \
+                     convert_tuple, emalloc, efree
+ from h5t cimport TypeID, typewrap, py_create
+@@ -471,7 +470,8 @@ cdef class DatasetID(ObjectID):
+             cdef int rank
+             cdef uint32_t filters
+             cdef hsize_t read_chunk_nbytes
+-            cdef array.array data = array.array('B')
++            cdef char *data = NULL
++            cdef bytes ret
+ 
+             dset_id = self.id
+             dxpl_id = pdefault(dxpl)
+@@ -485,15 +485,19 @@ cdef class DatasetID(ObjectID):
+                 offset = <hsize_t*>emalloc(sizeof(hsize_t)*rank)
+                 convert_tuple(offsets, offset, rank)
+                 H5Dget_chunk_storage_size(dset_id, offset, &read_chunk_nbytes)
+-                array.resize(data, read_chunk_nbytes)
++                data = <char *>emalloc(read_chunk_nbytes)
+ 
+                 IF HDF5_VERSION >= (1, 10, 3):
+-                    H5Dread_chunk(dset_id, dxpl_id, offset, &filters, data.data.as_voidptr)
++                    H5Dread_chunk(dset_id, dxpl_id, offset, &filters, data)
+                 ELSE:
+-                    H5DOread_chunk(dset_id, dxpl_id, offset, &filters, data.data.as_voidptr)
++                    H5DOread_chunk(dset_id, dxpl_id, offset, &filters, data)
++                ret = data[:read_chunk_nbytes]
+             finally:
+                 efree(offset)
++                if data:
++                    efree(data)
+                 if space_id:
+                     H5Sclose(space_id)
+ 
+-            return filters, bytes(data)
++            return filters, ret
++
+diff --git a/h5py/tests/test_dataset.py b/h5py/tests/test_dataset.py
+index b5ba988c..cecbc370 100644
+--- a/h5py/tests/test_dataset.py
++++ b/h5py/tests/test_dataset.py
+@@ -1061,7 +1061,7 @@ class TestVlen(BaseDataset):
+         self.assertArrayEqual(ds[1], np.arange(0))
+         self.assertArrayEqual(ds[2], np.array([1, 2, 3]))
+         self.assertArrayEqual(ds[1], np.arange(0))
+-        ds[0:2] = np.array([np.arange(5), np.arange(4)])
++        ds[0:2] = np.array([np.arange(5), np.arange(4)], dtype=object)
+         self.assertArrayEqual(ds[0], np.arange(5))
+         self.assertArrayEqual(ds[1], np.arange(4))
+         ds[0:2] = np.array([np.arange(3), np.arange(3)])
+@@ -1090,7 +1090,7 @@ class TestVlen(BaseDataset):
+         self.assertArrayEqual(ds[0], np.array([1, 1]))
+         self.assertArrayEqual(ds[1], np.array([1]))
+         self.assertArrayEqual(ds[2], np.array([1, 2, 3]))
+-        ds[0:2] = np.array([[0.1, 1.1, 2.1, 3.1, 4], np.arange(4)])
++        ds[0:2] = np.array([[0.1, 1.1, 2.1, 3.1, 4], np.arange(4)], dtype=object)
+         self.assertArrayEqual(ds[0], np.arange(5))
+         self.assertArrayEqual(ds[1], np.arange(4))
+         ds[0:2] = np.array([np.array([0.1, 1.2, 2.2]),
+@@ -1103,7 +1103,7 @@ class TestVlen(BaseDataset):
+         ds = self.f.create_dataset('vlen', (2, 2), dtype=dt)
+         ds[0, 0] = np.arange(1)
+         ds[:, :] = np.array([[np.arange(3), np.arange(2)],
+-                            [np.arange(1), np.arange(2)]])
++                            [np.arange(1), np.arange(2)]], dtype=object)
+         ds[:, :] = np.array([[np.arange(2), np.arange(2)],
+                              [np.arange(2), np.arange(2)]])
+ 
+diff --git a/h5py/tests/test_dtype.py b/h5py/tests/test_dtype.py
+index 6abc101f..6dc6ca54 100644
+--- a/h5py/tests/test_dtype.py
++++ b/h5py/tests/test_dtype.py
+@@ -116,7 +116,7 @@ class TestVlen(TestCase):
+ 
+         with h5py.File(fname, 'w') as f:
+             df1 = f.create_dataset('test', (len(arr1),), dtype=dt1)
+-            df1[:] = np.array(arr1)
++            df1[:] = np.array(arr1, dtype=object)
+ 
+         with h5py.File(fname, 'r') as f:
+             df2 = f['test']
+diff --git a/setup_build.py b/setup_build.py
+index c0e9a28c..10f0fa20 100644
+--- a/setup_build.py
++++ b/setup_build.py
+@@ -46,7 +46,9 @@ COMPILER_SETTINGS = {
+    'libraries'      : ['hdf5', 'hdf5_hl'],
+    'include_dirs'   : [localpath('lzf')],
+    'library_dirs'   : [],
+-   'define_macros'  : [('H5_USE_16_API', None)]
++   'define_macros'  : [('H5_USE_16_API', None),
++                       ('NPY_NO_DEPRECATED_API', 0),
++                      ]
+ }
+ 
+ if sys.platform.startswith('win'):
