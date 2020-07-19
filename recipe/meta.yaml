@@ -25,6 +25,7 @@ source:
     # skip failing unicode test on windows
     - skip-failing-unicode-test.patch  # [win]
     - use-char-not-array-array.patch
+    - avoid-race-conditions.patch
 
 build:
   number: {{ build }}
