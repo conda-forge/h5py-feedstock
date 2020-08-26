@@ -5,7 +5,7 @@ Home: http://www.h5py.org/
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Read and write HDF5 files from Python
 
@@ -29,162 +29,156 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_mpimpichpython3.6</td>
+              <td>linux_64_mpimpichpython3.6.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_mpimpichpython3.6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_64_mpimpichpython3.6.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_mpimpichpython3.7</td>
+              <td>linux_64_mpimpichpython3.7.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_mpimpichpython3.7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_64_mpimpichpython3.7.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_mpimpichpython3.8</td>
+              <td>linux_64_mpimpichpython3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_mpimpichpython3.8" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_64_mpimpichpython3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_mpinompipython3.6</td>
+              <td>linux_64_mpinompipython3.6.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_mpinompipython3.6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_64_mpinompipython3.6.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_mpinompipython3.7</td>
+              <td>linux_64_mpinompipython3.7.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_mpinompipython3.7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_64_mpinompipython3.7.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_mpinompipython3.8</td>
+              <td>linux_64_mpinompipython3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_mpinompipython3.8" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_64_mpinompipython3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_mpiopenmpipython3.6</td>
+              <td>linux_64_mpiopenmpipython3.6.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_mpiopenmpipython3.6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_64_mpiopenmpipython3.6.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_mpiopenmpipython3.7</td>
+              <td>linux_64_mpiopenmpipython3.7.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_mpiopenmpipython3.7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_64_mpiopenmpipython3.7.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_mpiopenmpipython3.8</td>
+              <td>linux_64_mpiopenmpipython3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_mpiopenmpipython3.8" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=linux&configuration=linux_64_mpiopenmpipython3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_mpimpichpython3.6</td>
+              <td>osx_64_mpimpichpython3.6.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_mpimpichpython3.6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpimpichpython3.6.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_mpimpichpython3.7</td>
+              <td>osx_64_mpimpichpython3.7.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_mpimpichpython3.7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpimpichpython3.7.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_mpimpichpython3.8</td>
+              <td>osx_64_mpimpichpython3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_mpimpichpython3.8" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpimpichpython3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_mpinompipython3.6</td>
+              <td>osx_64_mpinompipython3.6.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_mpinompipython3.6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpinompipython3.6.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_mpinompipython3.7</td>
+              <td>osx_64_mpinompipython3.7.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_mpinompipython3.7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpinompipython3.7.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_mpinompipython3.8</td>
+              <td>osx_64_mpinompipython3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_mpinompipython3.8" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpinompipython3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_mpiopenmpipython3.6</td>
+              <td>osx_64_mpiopenmpipython3.6.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_mpiopenmpipython3.6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpiopenmpipython3.6.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_mpiopenmpipython3.7</td>
+              <td>osx_64_mpiopenmpipython3.7.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_mpiopenmpipython3.7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpiopenmpipython3.7.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_mpiopenmpipython3.8</td>
+              <td>osx_64_mpiopenmpipython3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_mpiopenmpipython3.8" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpiopenmpipython3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_c_compilervs2015python3.6</td>
+              <td>win_64_python3.6.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015python3.6" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=win&configuration=win_64_python3.6.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_c_compilervs2015python3.7</td>
+              <td>win_64_python3.7.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015python3.7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=win&configuration=win_64_python3.7.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_c_compilervs2015python3.8</td>
+              <td>win_64_python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2015python3.8" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=master&jobName=win&configuration=win_64_python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr>
           </tbody>
         </table>
       </details>
-    </td>
-  </tr>
-  <tr>
-    <td>Linux_ppc64le</td>
-    <td>
-      <img src="https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg" alt="ppc64le disabled">
     </td>
   </tr>
 </table>
