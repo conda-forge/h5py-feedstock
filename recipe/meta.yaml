@@ -9,7 +9,7 @@
 {% set build = build + 100 %}
 {% endif %}
 
-{% set commit = "84d7b7e58177e2c1b63ae37115bb4a88f6a90049" %}
+{% set commit = "f525d1c180f6b4bc59726faf833fd50a26d57d83" %}
 
 package:
   name: h5py
@@ -17,7 +17,7 @@ package:
 
 source:
   url: https://github.com/h5py/h5py/archive/{{ commit }}.tar.gz
-  sha256: 997496f5f6c237958399ee65605561fa05eaade2125aeb26fc132c515eb17871
+  sha256: b199608bfff08257ab2bff03d6ab0546161359f72a3670b3ad8ef73a63c3b3a2
 
 build:
   number: {{ build }}
