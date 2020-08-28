@@ -18,6 +18,8 @@ package:
 source:
   url: https://github.com/h5py/h5py/archive/{{ commit }}.tar.gz
   sha256: b199608bfff08257ab2bff03d6ab0546161359f72a3670b3ad8ef73a63c3b3a2
+  patches:
+    - FIX__init_`self_mpi`_as_None_in_`setup_configure_py`.patch
 
 build:
   number: {{ build }}
