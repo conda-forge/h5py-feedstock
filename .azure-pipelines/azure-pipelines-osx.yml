@@ -5,37 +5,45 @@
 jobs:
 - job: osx
   pool:
-    vmImage: macOS-10.14
+    vmImage: macOS-10.15
   strategy:
     matrix:
-      osx_mpimpichpython3.6.____cpython:
-        CONFIG: osx_mpimpichpython3.6.____cpython
+      osx_64_mpimpichnumpy1.16python3.6.____cpython:
+        CONFIG: osx_64_mpimpichnumpy1.16python3.6.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_mpimpichpython3.7.____cpython:
-        CONFIG: osx_mpimpichpython3.7.____cpython
+      osx_64_mpimpichnumpy1.16python3.7.____cpython:
+        CONFIG: osx_64_mpimpichnumpy1.16python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_mpimpichpython3.8.____cpython:
-        CONFIG: osx_mpimpichpython3.8.____cpython
+      osx_64_mpimpichnumpy1.16python3.8.____cpython:
+        CONFIG: osx_64_mpimpichnumpy1.16python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_mpinompipython3.6.____cpython:
-        CONFIG: osx_mpinompipython3.6.____cpython
+      osx_64_mpimpichnumpy1.19python3.9.____cpython:
+        CONFIG: osx_64_mpimpichnumpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_mpinompipython3.7.____cpython:
-        CONFIG: osx_mpinompipython3.7.____cpython
+      osx_64_mpinompinumpy1.16python3.6.____cpython:
+        CONFIG: osx_64_mpinompinumpy1.16python3.6.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_mpinompipython3.8.____cpython:
-        CONFIG: osx_mpinompipython3.8.____cpython
+      osx_64_mpinompinumpy1.16python3.7.____cpython:
+        CONFIG: osx_64_mpinompinumpy1.16python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_mpiopenmpipython3.6.____cpython:
-        CONFIG: osx_mpiopenmpipython3.6.____cpython
+      osx_64_mpinompinumpy1.16python3.8.____cpython:
+        CONFIG: osx_64_mpinompinumpy1.16python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_mpiopenmpipython3.7.____cpython:
-        CONFIG: osx_mpiopenmpipython3.7.____cpython
+      osx_64_mpinompinumpy1.19python3.9.____cpython:
+        CONFIG: osx_64_mpinompinumpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_mpiopenmpipython3.8.____cpython:
-        CONFIG: osx_mpiopenmpipython3.8.____cpython
+      osx_64_mpiopenmpinumpy1.16python3.6.____cpython:
+        CONFIG: osx_64_mpiopenmpinumpy1.16python3.6.____cpython
         UPLOAD_PACKAGES: 'True'
-    maxParallel: 8
+      osx_64_mpiopenmpinumpy1.16python3.7.____cpython:
+        CONFIG: osx_64_mpiopenmpinumpy1.16python3.7.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_64_mpiopenmpinumpy1.16python3.8.____cpython:
+        CONFIG: osx_64_mpiopenmpinumpy1.16python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_64_mpiopenmpinumpy1.19python3.9.____cpython:
+        CONFIG: osx_64_mpiopenmpinumpy1.19python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
 
   steps:
@@ -44,6 +52,7 @@ jobs:
       export CI=azure
       export OSX_FORCE_SDK_DOWNLOAD="1"
       export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
+      export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
       ./.scripts/run_osx_build.sh
     displayName: Run OSX build
     env:

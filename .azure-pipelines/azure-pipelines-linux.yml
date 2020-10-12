@@ -8,46 +8,62 @@ jobs:
     vmImage: ubuntu-16.04
   strategy:
     matrix:
-      linux_mpimpichpython3.6.____cpython:
-        CONFIG: linux_mpimpichpython3.6.____cpython
+      linux_64_mpimpichnumpy1.16python3.6.____cpython:
+        CONFIG: linux_64_mpimpichnumpy1.16python3.6.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_mpimpichpython3.7.____cpython:
-        CONFIG: linux_mpimpichpython3.7.____cpython
+      linux_64_mpimpichnumpy1.16python3.7.____cpython:
+        CONFIG: linux_64_mpimpichnumpy1.16python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_mpimpichpython3.8.____cpython:
-        CONFIG: linux_mpimpichpython3.8.____cpython
+      linux_64_mpimpichnumpy1.16python3.8.____cpython:
+        CONFIG: linux_64_mpimpichnumpy1.16python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_mpinompipython3.6.____cpython:
-        CONFIG: linux_mpinompipython3.6.____cpython
+      linux_64_mpimpichnumpy1.19python3.9.____cpython:
+        CONFIG: linux_64_mpimpichnumpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_mpinompipython3.7.____cpython:
-        CONFIG: linux_mpinompipython3.7.____cpython
+      linux_64_mpinompinumpy1.16python3.6.____cpython:
+        CONFIG: linux_64_mpinompinumpy1.16python3.6.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_mpinompipython3.8.____cpython:
-        CONFIG: linux_mpinompipython3.8.____cpython
+      linux_64_mpinompinumpy1.16python3.7.____cpython:
+        CONFIG: linux_64_mpinompinumpy1.16python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_mpiopenmpipython3.6.____cpython:
-        CONFIG: linux_mpiopenmpipython3.6.____cpython
+      linux_64_mpinompinumpy1.16python3.8.____cpython:
+        CONFIG: linux_64_mpinompinumpy1.16python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_mpiopenmpipython3.7.____cpython:
-        CONFIG: linux_mpiopenmpipython3.7.____cpython
+      linux_64_mpinompinumpy1.19python3.9.____cpython:
+        CONFIG: linux_64_mpinompinumpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_mpiopenmpipython3.8.____cpython:
-        CONFIG: linux_mpiopenmpipython3.8.____cpython
+      linux_64_mpiopenmpinumpy1.16python3.6.____cpython:
+        CONFIG: linux_64_mpiopenmpinumpy1.16python3.6.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-    maxParallel: 8
+      linux_64_mpiopenmpinumpy1.16python3.7.____cpython:
+        CONFIG: linux_64_mpiopenmpinumpy1.16python3.7.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: condaforge/linux-anvil-comp7
+      linux_64_mpiopenmpinumpy1.16python3.8.____cpython:
+        CONFIG: linux_64_mpiopenmpinumpy1.16python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: condaforge/linux-anvil-comp7
+      linux_64_mpiopenmpinumpy1.19python3.9.____cpython:
+        CONFIG: linux_64_mpiopenmpinumpy1.19python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: condaforge/linux-anvil-comp7
   timeoutInMinutes: 360
 
   steps:
+  - script: |
+         rm -rf /opt/ghc
+         df -h
+    displayName: Manage disk space
+
   # configure qemu binfmt-misc running.  This allows us to run docker containers
   # embedded qemu-static
   - script: |
@@ -59,6 +75,7 @@ jobs:
   - script: |
         export CI=azure
         export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
+        export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
         .scripts/run_docker_build.sh
     displayName: Run docker build
     env:
