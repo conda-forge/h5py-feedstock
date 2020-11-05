@@ -17,14 +17,8 @@ source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
   sha256: 5cd41229b92d2d40f6b73f6f927464f3ac1704be03f9eeb57b3152338f796e9e
   patches:
-    - remove_test.patch
-    - remove_read_direct_chunk_test.patch  # [py < 30]
-    # see https://github.com/h5py/h5py/issues/1244
-    #     https://github.com/h5py/h5py/pull/1325
-    - ppc64le_test.patch
     # skip failing unicode test on windows
     - skip-failing-unicode-test.patch  # [win]
-    - use-char-not-array-array.patch
 
 build:
   number: {{ build }}
@@ -33,8 +27,6 @@ build:
   {% else %}
   {% set mpi_prefix = "nompi" %}
   {% endif %}
-  # There are dependency conflicts for Python 2 on Windows
-  skip: true  # [win and py<30]
   # add build string so packages can depend on
   # mpi or nompi variants
   # dependencies:
@@ -57,7 +49,6 @@ requirements:
     - hdf5
     - hdf5 * {{ mpi_prefix }}_*
     - cython
-    - six
     - pkgconfig
   run:
     - python
@@ -66,8 +57,6 @@ requirements:
     - mpi4py  # [mpi != 'nompi']
     # hdf5 >=1.10.4 has run_exports
     - hdf5
-    - six
-    - unittest2  # [py26 or py27]
     - pyreadline  # [win]
 
 test:
@@ -81,6 +70,7 @@ about:
   license: BSD-3-Clause
   license_file: licenses/license.txt
   summary: Read and write HDF5 files from Python
+  dev_url: https://github.com/h5py/h5py
 
 extra:
   recipe-maintainers:
