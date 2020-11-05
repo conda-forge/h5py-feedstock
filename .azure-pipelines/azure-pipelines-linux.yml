@@ -8,52 +8,40 @@ jobs:
     vmImage: ubuntu-16.04
   strategy:
     matrix:
-      linux_64_mpimpichnumpy1.16python3.6.____cpython:
-        CONFIG: linux_64_mpimpichnumpy1.16python3.6.____cpython
+      linux_64_mpimpichpython3.6.____cpython:
+        CONFIG: linux_64_mpimpichpython3.6.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_64_mpimpichnumpy1.16python3.7.____cpython:
-        CONFIG: linux_64_mpimpichnumpy1.16python3.7.____cpython
+      linux_64_mpimpichpython3.7.____cpython:
+        CONFIG: linux_64_mpimpichpython3.7.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_64_mpimpichnumpy1.16python3.8.____cpython:
-        CONFIG: linux_64_mpimpichnumpy1.16python3.8.____cpython
+      linux_64_mpimpichpython3.8.____cpython:
+        CONFIG: linux_64_mpimpichpython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_64_mpimpichnumpy1.19python3.9.____cpython:
-        CONFIG: linux_64_mpimpichnumpy1.19python3.9.____cpython
+      linux_64_mpinompipython3.6.____cpython:
+        CONFIG: linux_64_mpinompipython3.6.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_64_mpinompinumpy1.16python3.6.____cpython:
-        CONFIG: linux_64_mpinompinumpy1.16python3.6.____cpython
+      linux_64_mpinompipython3.7.____cpython:
+        CONFIG: linux_64_mpinompipython3.7.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_64_mpinompinumpy1.16python3.7.____cpython:
-        CONFIG: linux_64_mpinompinumpy1.16python3.7.____cpython
+      linux_64_mpinompipython3.8.____cpython:
+        CONFIG: linux_64_mpinompipython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_64_mpinompinumpy1.16python3.8.____cpython:
-        CONFIG: linux_64_mpinompinumpy1.16python3.8.____cpython
+      linux_64_mpiopenmpipython3.6.____cpython:
+        CONFIG: linux_64_mpiopenmpipython3.6.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_64_mpinompinumpy1.19python3.9.____cpython:
-        CONFIG: linux_64_mpinompinumpy1.19python3.9.____cpython
+      linux_64_mpiopenmpipython3.7.____cpython:
+        CONFIG: linux_64_mpiopenmpipython3.7.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_64_mpiopenmpinumpy1.16python3.6.____cpython:
-        CONFIG: linux_64_mpiopenmpinumpy1.16python3.6.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_64_mpiopenmpinumpy1.16python3.7.____cpython:
-        CONFIG: linux_64_mpiopenmpinumpy1.16python3.7.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_64_mpiopenmpinumpy1.16python3.8.____cpython:
-        CONFIG: linux_64_mpiopenmpinumpy1.16python3.8.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_64_mpiopenmpinumpy1.19python3.9.____cpython:
-        CONFIG: linux_64_mpiopenmpinumpy1.19python3.9.____cpython
+      linux_64_mpiopenmpipython3.8.____cpython:
+        CONFIG: linux_64_mpiopenmpipython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
   timeoutInMinutes: 360
