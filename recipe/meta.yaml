@@ -70,11 +70,14 @@ requirements:
     - pyreadline  # [win]
 
 test:
-  requires:
-    - pytest
-    - pytest-mpi
   imports:
     - h5py
+  commands:
+    - pip check
+  requires:
+    - pip
+    - pytest
+    - pytest-mpi
 
 about:
   home: http://www.h5py.org/
