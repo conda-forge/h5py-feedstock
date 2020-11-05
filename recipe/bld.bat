@@ -1,5 +1,5 @@
-"%PYTHON%" setup.py configure --hdf5="%LIBRARY_PREFIX%"  --hdf5-version=%hdf5%
-if errorlevel 1 exit 1
+set HDF5_VERSION=%hdf5%
+set HDF5_DIR="%LIBRARY_PREFIX%"
 
-"%PYTHON%" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+"%PYTHON%" -m pip install . --no-deps --ignore-installed --no-cache-dir -vv
 if errorlevel 1 exit 1

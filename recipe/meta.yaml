@@ -27,6 +27,8 @@ build:
   {% else %}
   {% set mpi_prefix = "nompi" %}
   {% endif %}
+  # Need to wait on numpy 1.19.3 build for Python 3.9 support
+  skip: true  # [py==39]
   # add build string so packages can depend on
   # mpi or nompi variants
   # dependencies:
@@ -41,6 +43,7 @@ requirements:
   host:
     - python
     - pip
+    # h5py setup builds off these exact versions
     - numpy 1.12  # [py==36]
     - numpy 1.14.5  # [py==37]
     - numpy 1.17.5  # [py==38]
