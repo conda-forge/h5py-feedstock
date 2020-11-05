@@ -41,7 +41,10 @@ requirements:
   host:
     - python
     - pip
-    - numpy
+    - numpy 1.12  # [py==36]
+    - numpy 1.14.5  # [py==37]
+    - numpy 1.17.5  # [py==38]
+    - numpy 1.19.3  # [py>=39]
     - {{ mpi }}  # [mpi != 'nompi']
     - mpi4py  # [mpi != 'nompi']
     # need to list hdf5 twice to get version pinning from conda_build_config
@@ -52,7 +55,10 @@ requirements:
     - pkgconfig
   run:
     - python
-    - {{ pin_compatible('numpy') }}
+    - numpy >=1.12.0  # [py==36]
+    - numpy >=1.14.5  # [py==37]
+    - numpy >=1.17.5  # [py==38]
+    - numpy >=1.19.3  # [py>=39]
     - {{ mpi }}  # [mpi != 'nompi']
     - mpi4py  # [mpi != 'nompi']
     # hdf5 >=1.10.4 has run_exports
