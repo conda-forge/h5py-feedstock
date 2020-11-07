@@ -15,7 +15,7 @@ package:
 
 source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
-  sha256: 1e2516f190652beedcb8c7acfa1c6fa92d99b42331cbef5e5c7ec2d65b0fc3c2
+  sha256: 62fdd5153a699e3dd7393d965ee3721a99c4635621bdad4580d34c496d6e3a5b
   patches:
     # override setup.py specified minimum compatible numpy versions
     # we take care of those via numpy pinning below
