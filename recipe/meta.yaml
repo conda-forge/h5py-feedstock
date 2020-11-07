@@ -20,8 +20,6 @@ source:
     # override setup.py specified minimum compatible numpy versions
     # we take care of those via numpy pinning below
     - adjust-minimum-numpy-run-versions.patch
-    # skip failing unicode test on windows
-    - skip-failing-unicode-test.patch  # [win]
 
 build:
   number: {{ build }}
