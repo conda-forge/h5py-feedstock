@@ -17,6 +17,9 @@ source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
   sha256: 5cd41229b92d2d40f6b73f6f927464f3ac1704be03f9eeb57b3152338f796e9e
   patches:
+    # override setup.py specified minimum compatible numpy versions
+    # we take care of those via numpy pinning below
+    - adjust-minimum-numpy-run-versions.patch
     # skip failing unicode test on windows
     - skip-failing-unicode-test.patch  # [win]
 
@@ -27,8 +30,6 @@ build:
   {% else %}
   {% set mpi_prefix = "nompi" %}
   {% endif %}
-  # Need to wait on numpy 1.19.3 build for Python 3.9 support
-  skip: true  # [py==39]
   # add build string so packages can depend on
   # mpi or nompi variants
   # dependencies:
@@ -43,13 +44,9 @@ requirements:
   host:
     - python
     - pip
-    # h5py setup builds off these exact versions
-    - numpy 1.12  # [py==36]
-    - numpy 1.14.5  # [py==37]
-    - numpy 1.17.5  # [py==38]
-    - numpy 1.19.3  # [py>=39]
+    - numpy
     - {{ mpi }}  # [mpi != 'nompi']
-    - mpi4py  # [mpi != 'nompi']
+    - mpi4py >=3.0  # [mpi != 'nompi']
     # need to list hdf5 twice to get version pinning from conda_build_config
     # and build pinning from {{ mpi_prefix }}
     - hdf5
@@ -59,12 +56,9 @@ requirements:
   run:
     - python
     - cached-property
-    - numpy >=1.12.0  # [py==36]
-    - numpy >=1.14.5  # [py==37]
-    - numpy >=1.17.5  # [py==38]
-    - numpy >=1.19.3  # [py>=39]
+    - {{ pin_compatible('numpy') }}
     - {{ mpi }}  # [mpi != 'nompi']
-    - mpi4py  # [mpi != 'nompi']
+    - mpi4py >=3.0  # [mpi != 'nompi']
     # hdf5 >=1.10.4 has run_exports
     - hdf5
     - pyreadline  # [win]
