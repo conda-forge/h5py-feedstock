@@ -9,6 +9,8 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/h5py-feedstock/
 
 Summary: Read and write HDF5 files from Python
 
+Development: https://github.com/h5py/h5py
+
 Current build status
 ====================
 

@@ -1,9 +1,11 @@
 #!/bin/bash
 
-mpi_arg=""
+export HDF5_DIR=${PREFIX}
 if [[ "$mpi" != "nompi" ]]; then
-  mpi_arg="--mpi"
+  export HDF5_MPI="ON"
 fi
 
-"${PYTHON}" setup.py configure $mpi_arg --hdf5="${PREFIX}"
-"${PYTHON}" -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+# tell setup.py to not 'pip install' exact package requirements
+export H5PY_SETUP_REQUIRES="0"
+
+"${PYTHON}" -m pip install . --no-deps --ignore-installed --no-cache-dir -vv

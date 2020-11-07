@@ -1,5 +1,5 @@
-{% set version = "2.10.0" %}
-{% set build = 5 %}
+{% set version = "3.1.0" %}
+{% set build = 0 %}
 
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
@@ -15,16 +15,11 @@ package:
 
 source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
-  sha256: 2a8369f74d079dbfe35aebbf56b565a5d2e7bea6d3cdba682b4d456128a23b5e
+  sha256: 62fdd5153a699e3dd7393d965ee3721a99c4635621bdad4580d34c496d6e3a5b
   patches:
-    - remove_test.patch
-    - remove_read_direct_chunk_test.patch  # [py < 30]
-    # see https://github.com/h5py/h5py/issues/1244
-    #     https://github.com/h5py/h5py/pull/1325
-    - ppc64le_test.patch
-    # skip failing unicode test on windows
-    - skip-failing-unicode-test.patch  # [win]
-    - use-char-not-array-array.patch
+    # override setup.py specified minimum compatible numpy versions
+    # we take care of those via numpy pinning below
+    - adjust-minimum-numpy-run-versions.patch
 
 build:
   number: {{ build }}
@@ -33,15 +28,13 @@ build:
   {% else %}
   {% set mpi_prefix = "nompi" %}
   {% endif %}
-  # There are dependency conflicts for Python 2 on Windows
-  skip: True  # [win and py<30]
   # add build string so packages can depend on
   # mpi or nompi variants
   # dependencies:
   # `pkg * mpi_mpich_*` for mpich
   # `hdf5 * mpi_*` for any mpi
   # `hdf5 * nompi_*` for no mpi
-  string: "{{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}"
+  string: {{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}
 
 requirements:
   build:
@@ -51,36 +44,40 @@ requirements:
     - pip
     - numpy
     - {{ mpi }}  # [mpi != 'nompi']
-    - mpi4py  # [mpi != 'nompi']
+    - mpi4py >=3.0  # [mpi != 'nompi']
     # need to list hdf5 twice to get version pinning from conda_build_config
     # and build pinning from {{ mpi_prefix }}
     - hdf5
     - hdf5 * {{ mpi_prefix }}_*
-    - cython
-    - six
+    - cython >=0.29.0  # [py<38]
+    - cython >=0.29.14  # [py>=38]
     - pkgconfig
   run:
     - python
+    - cached-property
     - {{ pin_compatible('numpy') }}
     - {{ mpi }}  # [mpi != 'nompi']
-    - mpi4py  # [mpi != 'nompi']
+    - mpi4py >=3.0  # [mpi != 'nompi']
     # hdf5 >=1.10.4 has run_exports
     - hdf5
-    - six
-    - unittest2  # [py26 or py27]
     - pyreadline  # [win]
 
 test:
-  requires:
-    - pytest
   imports:
     - h5py
+  commands:
+    - pip check
+  requires:
+    - pip
+    - pytest
+    - pytest-mpi
 
 about:
   home: http://www.h5py.org/
   license: BSD-3-Clause
   license_file: licenses/license.txt
   summary: Read and write HDF5 files from Python
+  dev_url: https://github.com/h5py/h5py
 
 extra:
   recipe-maintainers:
