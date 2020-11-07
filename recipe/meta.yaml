@@ -51,7 +51,8 @@ requirements:
     # and build pinning from {{ mpi_prefix }}
     - hdf5
     - hdf5 * {{ mpi_prefix }}_*
-    - cython
+    - cython >=0.29.0  # [py<38]
+    - cython >=0.29.14  # [py>=38]
     - pkgconfig
   run:
     - python
