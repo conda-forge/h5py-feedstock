@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export HDF5_VERSION=${hdf5}
 export HDF5_DIR=${PREFIX}
 export OPAL_PREFIX=${PREFIX}
 if [[ "$mpi" != "nompi" ]]; then

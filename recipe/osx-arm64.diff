@@ -1,0 +1,11 @@
+--- setup_build.py      2020-12-31 10:58:00.000000000 -0800
++++ setup_build.py      2020-12-31 10:58:17.000000000 -0800
+@@ -158,7 +158,7 @@
+         s %= {
+             'mpi': bool(config.mpi),
+             'version': config.hdf5_version,
+-            'complex256_support': hasattr(numpy, 'complex256'),
++            'complex256_support': False,
+             'numpy_version': numpy.__version__,
+             'cython_version': cython_version,
+         }

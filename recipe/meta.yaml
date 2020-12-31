@@ -20,6 +20,7 @@ source:
     # override setup.py specified minimum compatible numpy versions
     # we take care of those via numpy pinning below
     - adjust-minimum-numpy-run-versions.patch
+    - osx-arm64.diff    # [osx and arm64]
 
 build:
   number: {{ build }}
