@@ -43,6 +43,7 @@ requirements:
     - cython                                 # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler("c") }}
+    - {{ mpi }}  # [mpi == 'openmpi' and build_platform != target_platform]
   host:
     - python
     - pip
