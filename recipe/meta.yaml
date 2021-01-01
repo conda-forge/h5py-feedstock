@@ -20,6 +20,7 @@ source:
     # override setup.py specified minimum compatible numpy versions
     # we take care of those via numpy pinning below
     - adjust-minimum-numpy-run-versions.patch
+    - osx-arm64.diff    # [osx and arm64]
 
 build:
   number: {{ build }}
@@ -38,7 +39,12 @@ build:
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
     - {{ compiler("c") }}
+    - {{ mpi }}  # [mpi == 'openmpi' and build_platform != target_platform]
   host:
     - python
     - pip
