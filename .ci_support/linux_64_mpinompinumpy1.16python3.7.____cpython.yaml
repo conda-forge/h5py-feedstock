@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '7'
+- '9'
 cdt_name:
 - cos6
 channel_sources:
@@ -25,5 +25,7 @@ python:
 target_platform:
 - linux-64
 zip_keys:
+- - cdt_name
+  - docker_image
 - - python
   - numpy
