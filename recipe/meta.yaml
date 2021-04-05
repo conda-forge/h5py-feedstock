@@ -1,5 +1,5 @@
 {% set version = "2.10.0" %}
-{% set build = 5 %}
+{% set build = 6 %}
 
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
@@ -45,7 +45,12 @@ build:
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
     - {{ compiler("c") }}
+    - {{ mpi }}  # [mpi == 'openmpi' and build_platform != target_platform]
   host:
     - python
     - pip
