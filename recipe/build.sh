@@ -1,5 +1,9 @@
 #!/bin/bash
 
+export HDF5_VERSION=${hdf5}
+export HDF5_DIR=${PREFIX}
+export OPAL_PREFIX=${PREFIX}
+
 mpi_arg=""
 if [[ "$mpi" != "nompi" ]]; then
   mpi_arg="--mpi"
