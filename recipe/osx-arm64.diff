@@ -1,0 +1,11 @@
+--- setup_build.py	2021-04-06 13:58:31.000000000 +0200
++++ setup_build.py	2021-04-06 13:58:48.000000000 +0200
+@@ -199,7 +199,7 @@
+                     'mpi': bool(config.mpi),
+                     'mpi4py_v2': bool(v2),
+                     'version': tuple(int(x) for x in config.hdf5_version.split('.')),
+-                    'complex256_support': hasattr(numpy, 'complex256')
++                    'complex256_support': False
+                 }
+                 s = s.encode('utf-8')
+                 f.write(s)

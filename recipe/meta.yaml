@@ -25,6 +25,7 @@ source:
     # skip failing unicode test on windows
     - skip-failing-unicode-test.patch  # [win]
     - use-char-not-array-array.patch
+    - osx-arm64.diff  # [osx and arm64]
 
 build:
   number: {{ build }}
