@@ -21,6 +21,7 @@ source:
     # we take care of those via numpy pinning below
     - adjust-minimum-numpy-run-versions.patch
     - osx-arm64.diff    # [osx and arm64]
+    - osx-arm64-hdf5.diff    # [osx and arm64]
 
 build:
   skip: True  # [py<=36]
@@ -37,6 +38,8 @@ build:
   # `hdf5 * mpi_*` for any mpi
   # `hdf5 * nompi_*` for no mpi
   string: {{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}
+  script_env:
+    - HDF5_HAS_ROS3=1 # [osx and arm64]
 
 requirements:
   build:
