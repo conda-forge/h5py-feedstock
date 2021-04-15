@@ -39,7 +39,7 @@ build:
   # `hdf5 * nompi_*` for no mpi
   string: {{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}
   script_env:
-    - HDF5_HAS_ROS3=1 # [osx and arm64]
+    - HDF5_HAS_ROS3=1  # [osx and arm64]
 
 requirements:
   build:
