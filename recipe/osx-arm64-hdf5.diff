@@ -1,0 +1,13 @@
+--- a/setup_configure.py
++++ b/setup_configure.py
+@@ -68,6 +68,10 @@ class BuildConfig:
+         mpi = mpi_enabled()
+         h5_inc, h5_lib, h5_macros = cls._find_hdf5_compiler_settings(mpi)
+
++        if os.environ.get('HDF5_HAS_ROS3', None) == '1':
++            h5_version = validate_version(os.environ.get('HDF5_VERSION'))
++            return cls(h5_inc, h5_lib, h5_macros, h5_version, mpi, True)
++
+         h5_version_s = os.environ.get('HDF5_VERSION')
+         if h5_version_s:
+             h5_version = validate_version(h5_version_s)

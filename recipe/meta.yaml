@@ -1,4 +1,4 @@
-{% set version = "3.1.0" %}
+{% set version = "3.2.1" %}
 {% set build = 0 %}
 
 # mpi must be defined for conda-smithy lint
@@ -15,14 +15,16 @@ package:
 
 source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
-  sha256: 62fdd5153a699e3dd7393d965ee3721a99c4635621bdad4580d34c496d6e3a5b
+  sha256: bc3d12b0a14deecf67b1c3786e528a6c5a1094150d46c07d0ba42e9d99751fa0
   patches:
     # override setup.py specified minimum compatible numpy versions
     # we take care of those via numpy pinning below
     - adjust-minimum-numpy-run-versions.patch
     - osx-arm64.diff    # [osx and arm64]
+    - osx-arm64-hdf5.diff    # [osx and arm64]
 
 build:
+  skip: True  # [py<=36]
   number: {{ build }}
   {% if mpi != 'nompi' %}
   {% set mpi_prefix = "mpi_" + mpi %}
@@ -36,6 +38,8 @@ build:
   # `hdf5 * mpi_*` for any mpi
   # `hdf5 * nompi_*` for no mpi
   string: {{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}
+  script_env:
+    - HDF5_HAS_ROS3=1  # [osx and arm64]
 
 requirements:
   build:
