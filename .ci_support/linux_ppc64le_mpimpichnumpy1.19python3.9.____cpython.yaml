@@ -11,7 +11,7 @@ channel_targets:
 docker_image:
 - quay.io/condaforge/linux-anvil-ppc64le
 hdf5:
-- 1.10.6
+- 1.12.1
 mpi:
 - mpich
 numpy:

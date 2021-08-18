@@ -11,11 +11,11 @@ channel_targets:
 docker_image:
 - quay.io/condaforge/linux-anvil-comp7
 hdf5:
-- 1.10.6
+- 1.12.1
 mpi:
 - openmpi
 numpy:
-- '1.17'
+- '1.18'
 pin_run_as_build:
   python:
     min_pin: x.x
