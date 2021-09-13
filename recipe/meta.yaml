@@ -1,5 +1,5 @@
 {% set version = "3.4.0" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
@@ -70,7 +70,6 @@ requirements:
     - mpi4py >=3.0  # [mpi != 'nompi']
     # hdf5 >=1.10.4 has run_exports
     - hdf5
-    - pyreadline  # [win]
 
 test:
   imports:
