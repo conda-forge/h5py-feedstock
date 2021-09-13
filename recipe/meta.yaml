@@ -70,7 +70,6 @@ requirements:
     - mpi4py >=3.0  # [mpi != 'nompi']
     # hdf5 >=1.10.4 has run_exports
     - hdf5
-    - pyreadline  # [win]
 
 test:
   imports:
