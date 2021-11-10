@@ -30,6 +30,3 @@ import h5py.utils
 should_have_mpi = os.getenv('mpi', 'nompi') != 'nompi'
 have_mpi = h5py.get_config().mpi
 assert have_mpi == should_have_mpi, "Expected mpi=%r, got %r" % (should_have_mpi, have_mpi)
-
-from sys import exit
-exit(h5py.run_tests())
