@@ -76,8 +76,8 @@ test:
     - h5py
   commands:
     - pip check
-    - OMPI_MCA_plm=isolated mpiexec -np 1 python3 -c "import h5py;h5py.run_tests()"  # [mpi != 'nompi']
-    - python3 -c "import h5py;h5py.run_tests()"  # [mpi == 'nompi']
+    - OMPI_MCA_plm=isolated mpiexec -np 1 python -c "import h5py;h5py.run_tests()"  # [mpi != 'nompi']
+    - python -c "import h5py;h5py.run_tests()"  # [mpi == 'nompi']
   requires:
     - pip
     - pytest
