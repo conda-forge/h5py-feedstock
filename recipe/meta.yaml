@@ -1,5 +1,5 @@
 {% set version = "3.4.0" %}
-{% set build = 1 %}
+{% set build = 2 %}
 
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
@@ -21,7 +21,7 @@ source:
     # we take care of those via numpy pinning below
     - adjust-minimum-numpy-run-versions.patch
     - osx-arm64.diff    # [osx and arm64]
-    - osx-arm64-hdf5.diff    # [osx and arm64]
+    - osx-arm64-hdf5.diff    # [build_platform != target_platform]
 
 build:
   skip: true  # [py<=36]
@@ -39,7 +39,7 @@ build:
   # `hdf5 * nompi_*` for no mpi
   string: {{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}
   script_env:
-    - HDF5_HAS_ROS3=1  # [osx and arm64]
+    - HDF5_HAS_ROS3=1  # [build_platform != target_platform]
 
 requirements:
   build:
