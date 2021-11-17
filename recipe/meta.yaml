@@ -76,8 +76,10 @@ test:
     - h5py
   commands:
     - pip check
-    - OMPI_MCA_plm=isolated mpiexec -np 1 python -c "import h5py,sys;sys.exit(h5py.run_tests())"  # [mpi != 'nompi']
-    - python -c "import h5py,sys;sys.exit(h5py.run_tests())"  # [mpi == 'nompi']
+    - export OMPI_MCA_plm="isolated"  # [unix and mpi != 'nompi']
+    - set "OMPI_MCA_plm=isolated"     # [win and mpi != 'nompi']
+    {% set mpi_extra = "mpiexec -np 1" if mpi != 'nompi' else "" %}
+    - {{ mpi_extra }} python -c "import h5py, sys; sys.exit(h5py.run_tests())"
   requires:
     - pip
     - pytest
