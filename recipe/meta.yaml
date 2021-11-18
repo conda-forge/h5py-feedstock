@@ -76,7 +76,7 @@ test:
     - export OMPI_MCA_plm="isolated"  # [unix and mpi != 'nompi']
     - set "OMPI_MCA_plm=isolated"     # [win and mpi != 'nompi']
     {% set mpi_extra = "mpiexec -np 1" if mpi != 'nompi' else "" %}
-    - {{ mpi_extra }} python -c "import h5py, sys; sys.exit(h5py.run_tests())"
+    - {{ mpi_extra }} python -c "import h5py, sys; sys.exit(h5py.run_tests('--with-mpi'))"
   requires:
     - pip
     - pytest
