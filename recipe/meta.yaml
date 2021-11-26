@@ -90,6 +90,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - jan-janssen
     - jakirkham
     - tacaswell
     - ocefpaf
