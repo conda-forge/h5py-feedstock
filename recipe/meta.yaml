@@ -1,5 +1,5 @@
-{% set version = "3.4.0" %}
-{% set build = 2 %}
+{% set version = "3.6.0" %}
+{% set build = 0 %}
 
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
@@ -15,11 +15,8 @@ package:
 
 source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
-  sha256: fc025383db42fae3c62d571820a197a529a8d87dd660340051bba9562a2d4c3b
+  sha256: 840fca0787bca8ad2729b9c20e06a16f219e7a24ccc59fdf5177a05ec8472b2d
   patches:
-    # override setup.py specified minimum compatible numpy versions
-    # we take care of those via numpy pinning below
-    - adjust-minimum-numpy-run-versions.patch
     - osx-arm64.diff    # [osx and arm64]
     - osx-arm64-hdf5.diff    # [build_platform != target_platform]
 
