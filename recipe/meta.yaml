@@ -61,7 +61,7 @@ requirements:
     - pkgconfig
   run:
     - python
-    - cached-property
+    - cached-property  # [py<38]    
     - {{ pin_compatible('numpy') }}
     - {{ mpi }}  # [mpi != 'nompi']
     - mpi4py >=3.0  # [mpi != 'nompi']
