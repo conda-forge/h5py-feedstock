@@ -8,8 +8,12 @@ hdf5:
 - 1.12.1
 mpi:
 - nompi
+mpich:
+- '4'
 numpy:
 - '1.21'
+openmpi:
+- '4'
 pin_run_as_build:
   python:
     min_pin: x.x
