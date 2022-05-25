@@ -18,7 +18,6 @@ source:
   sha256: 71ee0e0a25d6acc5e99ff13c287cae006604f6054dd9b60c352d0216e5d6b6f4
   patches:
     - osx-arm64.diff    # [osx and arm64]
-    - osx-arm64-hdf5.diff    # [build_platform != target_platform]
 
 build:
   skip: true  # [py<=36]
