@@ -1,9 +1,15 @@
 c_compiler:
-- vs2017
+- gcc
+c_compiler_version:
+- '10'
+cdt_name:
+- cos7
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
+docker_image:
+- quay.io/condaforge/linux-anvil-ppc64le
 hdf5:
 - 1.12.1
 mpi:
@@ -21,7 +27,7 @@ pin_run_as_build:
 python:
 - 3.9.* *_cpython
 target_platform:
-- win-64
+- linux-ppc64le
 zip_keys:
 - - python
   - numpy
