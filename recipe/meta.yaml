@@ -23,6 +23,7 @@ build:
   skip: true  # [win]
   skip: true  # [osx]
   skip: true  # [linux64]
+  skip: true  # [py!=39]
   number: {{ build }}
   {% if mpi != 'nompi' %}
   {% set mpi_prefix = "mpi_" + mpi %}
