@@ -9,9 +9,9 @@ channel_sources:
 channel_targets:
 - conda-forge main
 docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- quay.io/condaforge/linux-anvil-ppc64le
 hdf5:
-- 1.12.1
+- 1.12.2
 mpi:
 - openmpi
 mpich:
