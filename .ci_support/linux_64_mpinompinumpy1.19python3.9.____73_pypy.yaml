@@ -1,13 +1,9 @@
-BUILD:
-- aarch64-conda_cos7-linux-gnu
 c_compiler:
 - gcc
 c_compiler_version:
 - '10'
-cdt_arch:
-- aarch64
 cdt_name:
-- cos7
+- cos6
 channel_sources:
 - conda-forge
 channel_targets:
@@ -17,7 +13,7 @@ docker_image:
 hdf5:
 - 1.12.2
 mpi:
-- mpich
+- nompi
 mpich:
 - '4'
 numpy:
@@ -29,9 +25,9 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.8.* *_cpython
+- 3.9.* *_73_pypy
 target_platform:
-- linux-aarch64
+- linux-64
 zip_keys:
 - - python
   - numpy
