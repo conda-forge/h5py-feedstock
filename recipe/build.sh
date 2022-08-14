@@ -13,6 +13,7 @@ if [[ "$mpi" != "nompi" ]]; then
 fi
 
 if [[ ${target_platform} == "osx-arm64" ]]; then
+  # disable complex256 on macOS ARM64, see https://github.com/h5py/h5py/pull/2065
   export CIBW_ARCHS_MACOS=arm64
 fi
 
