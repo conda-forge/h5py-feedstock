@@ -13,11 +13,11 @@ docker_image:
 hdf5:
 - 1.12.2
 mpi:
-- nompi
+- openmpi
 mpich:
 - '4'
 numpy:
-- '1.23'
+- '1.20'
 openmpi:
 - '4'
 pin_run_as_build:
@@ -25,7 +25,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.11.* *_cpython
+- 3.8.* *_73_pypy
 target_platform:
 - linux-ppc64le
 zip_keys:
