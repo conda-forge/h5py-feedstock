@@ -1,5 +1,5 @@
-{% set version = "3.9.0" %}
-{% set build = 3 %}
+{% set version = "3.10.0" %}
+{% set build = 0 %}
 
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
@@ -15,10 +15,10 @@ package:
 
 source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
-  sha256: ac46f5caae570c9312edea6f65ad4e894e8da44a868b7f263e15265bc3de7a16
+  sha256: 9cac7838ab139ec71adf721a1305b954e18efa4f80c82fcfe34e1eb9639ded29
 
 build:
-  skip: true  # [py<=36]
+  skip: true  # [py<=37]
   number: {{ build }}
   {% if mpi != 'nompi' %}
   {% set mpi_prefix = "mpi_" + mpi %}
@@ -39,7 +39,7 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - cython <3a                             # [build_platform != target_platform]
+    - cython >=0.29.31,<1                    # [build_platform != target_platform]
     - hdf5                                   # [build_platform != target_platform]
     - hdf5 * {{ mpi_prefix }}_*              # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
@@ -55,7 +55,7 @@ requirements:
     # and build pinning from {{ mpi_prefix }}
     - hdf5
     - hdf5 * {{ mpi_prefix }}_*
-    - cython >=0.29.14,<3a
+    - cython >=0.29.31,<1
     - pkgconfig
   run:
     - python
