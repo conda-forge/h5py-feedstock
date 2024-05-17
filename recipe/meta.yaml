@@ -1,5 +1,5 @@
 {% set version = "3.11.0" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
@@ -44,6 +44,7 @@ requirements:
     - hdf5 * {{ mpi_prefix }}_*              # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler("c") }}
+    - {{ stdlib("c") }}
     - {{ mpi }}  # [mpi == 'openmpi' and build_platform != target_platform]
   host:
     - python
@@ -60,7 +61,6 @@ requirements:
   run:
     - python
     - cached-property
-    - {{ pin_compatible('numpy') }}
     - {{ mpi }}  # [mpi != 'nompi']
     - mpi4py >=3.0  # [mpi != 'nompi']
     # hdf5 >=1.10.4 has run_exports
