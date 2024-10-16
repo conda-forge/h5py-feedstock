@@ -16,6 +16,9 @@ package:
 source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
   sha256: ee8d25e6cc6275779a2727258bcce9f2296a58b6e5ccf4cdc467a3c3a97b56b2
+  patches:
+    # Disable complex256 for arm64
+    - bad-numpy-patch.patch   # [osx and arm64]
 
 build:
   skip: true  # [py<=37]

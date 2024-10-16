@@ -1,0 +1,14 @@
+diff --git a/setup_build.py b/setup_build.py
+index a041fa69..960bdccb 100644
+--- a/setup_build.py
++++ b/setup_build.py
+@@ -129,7 +129,7 @@ class h5py_build_ext(build_ext):
+         from Cython.Build import cythonize
+         import numpy
+ 
+-        complex256_support = hasattr(numpy, 'complex256')
++        complex256_support = False
+ 
+         # This allows ccache to recognise the files when pip builds in a temp
+         # directory. It speeds up repeatedly running tests through tox with
+
