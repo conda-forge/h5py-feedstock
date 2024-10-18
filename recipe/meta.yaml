@@ -53,6 +53,7 @@ requirements:
   host:
     - python
     - pip
+    - setuptools
     - numpy
     - {{ mpi }}  # [mpi != 'nompi']
     - mpi4py >=3.0  # [mpi != 'nompi']
