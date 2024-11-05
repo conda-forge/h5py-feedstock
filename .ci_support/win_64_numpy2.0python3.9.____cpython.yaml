@@ -7,7 +7,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 hdf5:
-- 1.14.4
+- 1.14.3
 mpi:
 - nompi
 mpich:
