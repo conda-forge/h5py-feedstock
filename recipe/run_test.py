@@ -32,7 +32,17 @@ have_mpi = h5py.get_config().mpi
 assert have_mpi == should_have_mpi, "Expected mpi=%r, got %r" % (should_have_mpi, have_mpi)
 
 from sys import exit
+test_args = []
 if have_mpi:
-    exit(h5py.run_tests("--with-mpi"))
-else:
-    exit(h5py.run_tests())
+    test_args.append("--with-mpi")
+
+# HDF5 1.14.4 and 1.14.5 have a regression in unicode handling on windows
+# https://github.com/conda-forge/hdf5-feedstock/issues/240
+# https://github.com/HDFGroup/hdf5/issues/5037
+if (
+    sys.platform == 'win32' and 
+    h5py.h5.get_libversion() in [(1, 14, 4), (1, 14, 5)]
+):
+    test_args.extend(["-k", '"(not test_unicode_hdf5_python_consistent)"'])
+
+exit(h5py.run_tests(" ".join(test_args)))
