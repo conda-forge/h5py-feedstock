@@ -71,11 +71,6 @@ requirements:
     # hdf5 >=1.10.4 has run_exports
     - hdf5
 
-{% set tests_to_skip = "not_a_real_test" %}
-# https://github.com/conda-forge/hdf5-feedstock/issues/240
-# https://github.com/HDFGroup/hdf5/issues/5037
-{% set tests_to_skip = tests_to_skip + "or test_unicode_hdf5_python_consistent" %}   # [hdf5 == "1.14.4" and win]
-{% set tests_to_skip = tests_to_skip + "or test_unicode_hdf5_python_consistent" %}   # [hdf5 == "1.14.5" and win]
 test:
   imports:
     - h5py
@@ -83,7 +78,7 @@ test:
     - pip check
   requires:
     - pip
-    - pytest -k "not ({{ tests_to_skip }})"
+    - pytest
     - pytest-mpi
 
 about:
