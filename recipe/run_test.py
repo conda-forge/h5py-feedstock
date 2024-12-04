@@ -1,4 +1,5 @@
 import os
+import sys
 
 os.environ['OMPI_MCA_plm'] = 'isolated'
 os.environ['OMPI_MCA_btl_vader_single_copy_mechanism'] = 'none'
@@ -31,7 +32,6 @@ should_have_mpi = os.getenv('mpi', 'nompi') != 'nompi'
 have_mpi = h5py.get_config().mpi
 assert have_mpi == should_have_mpi, "Expected mpi=%r, got %r" % (should_have_mpi, have_mpi)
 
-from sys import exit
 test_args = []
 if have_mpi:
     test_args.append("--with-mpi")
@@ -46,4 +46,4 @@ if (
 ):
     test_args.extend(["-k", '"(not test_unicode_hdf5_python_consistent)"'])
 
-exit(h5py.run_tests(" ".join(test_args)))
+sys.exit(h5py.run_tests(" ".join(test_args)))
