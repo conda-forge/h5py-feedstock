@@ -39,6 +39,7 @@ if have_mpi:
 # HDF5 1.14.4 and 1.14.5 have a regression in unicode handling on windows
 # https://github.com/conda-forge/hdf5-feedstock/issues/240
 # https://github.com/HDFGroup/hdf5/issues/5037
+# https://github.com/h5py/h5py/pull/2520
 if (
     sys.platform == 'win32' and 
     h5py.h5.get_libversion() in [(1, 14, 4), (1, 14, 5)]
