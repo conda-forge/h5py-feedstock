@@ -15,7 +15,7 @@ channel_targets:
 docker_image:
 - quay.io/condaforge/linux-anvil-x86_64:alma9
 hdf5:
-- 1.14.3
+- 1.14.6
 mpi:
 - mpich
 mpich:
