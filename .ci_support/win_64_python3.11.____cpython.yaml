@@ -1,5 +1,5 @@
 c_compiler:
-- vs2019
+- vs2022
 c_stdlib:
 - vs
 channel_sources:
@@ -24,3 +24,6 @@ python:
 - 3.11.* *_cpython
 target_platform:
 - win-64
+zip_keys:
+- - python
+  - channel_sources
