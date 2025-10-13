@@ -15,7 +15,7 @@ package:
 
 source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
-  sha256: d7d17c26da61b08489ce5c07cae0de1ed3fedfd2386a989e74652f111af6c171
+  sha256: beb62edf226b8821d3e06f4d35f57055c9ac2aca11961574d505a8d6b7919192
   patches:
     # Disable complex256 for arm64
     # follow https://github.com/conda-forge/cross-python-feedstock/issues/92
