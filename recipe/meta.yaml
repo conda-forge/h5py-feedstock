@@ -1,4 +1,4 @@
-{% set version = "3.15.0" %}
+{% set version = "3.15.1" %}
 {% set build = 0 %}
 
 # mpi must be defined for conda-smithy lint
@@ -15,7 +15,7 @@ package:
 
 source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
-  sha256: beb62edf226b8821d3e06f4d35f57055c9ac2aca11961574d505a8d6b7919192
+  sha256: 55a03d8fc1db535b243cccda3e6237844da25a17a2df3bc0ea9db6fbbbd7bf2b
   patches:
     # Disable complex256 for arm64
     # follow https://github.com/conda-forge/cross-python-feedstock/issues/92
