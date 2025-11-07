@@ -23,6 +23,9 @@ jobs:
       osx_64_mpimpichpython3.14.____cp314:
         CONFIG: osx_64_mpimpichpython3.14.____cp314
         UPLOAD_PACKAGES: 'True'
+      osx_64_mpimpichpython3.14.____cp314t:
+        CONFIG: osx_64_mpimpichpython3.14.____cp314t
+        UPLOAD_PACKAGES: 'True'
       osx_64_mpinompipython3.10.____cpython:
         CONFIG: osx_64_mpinompipython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -37,6 +40,9 @@ jobs:
         UPLOAD_PACKAGES: 'True'
       osx_64_mpinompipython3.14.____cp314:
         CONFIG: osx_64_mpinompipython3.14.____cp314
+        UPLOAD_PACKAGES: 'True'
+      osx_64_mpinompipython3.14.____cp314t:
+        CONFIG: osx_64_mpinompipython3.14.____cp314t
         UPLOAD_PACKAGES: 'True'
       osx_64_mpiopenmpipython3.10.____cpython:
         CONFIG: osx_64_mpiopenmpipython3.10.____cpython
@@ -53,6 +59,9 @@ jobs:
       osx_64_mpiopenmpipython3.14.____cp314:
         CONFIG: osx_64_mpiopenmpipython3.14.____cp314
         UPLOAD_PACKAGES: 'True'
+      osx_64_mpiopenmpipython3.14.____cp314t:
+        CONFIG: osx_64_mpiopenmpipython3.14.____cp314t
+        UPLOAD_PACKAGES: 'True'
       osx_arm64_mpimpichpython3.10.____cpython:
         CONFIG: osx_arm64_mpimpichpython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -67,6 +76,9 @@ jobs:
         UPLOAD_PACKAGES: 'True'
       osx_arm64_mpimpichpython3.14.____cp314:
         CONFIG: osx_arm64_mpimpichpython3.14.____cp314
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_mpimpichpython3.14.____cp314t:
+        CONFIG: osx_arm64_mpimpichpython3.14.____cp314t
         UPLOAD_PACKAGES: 'True'
       osx_arm64_mpinompipython3.10.____cpython:
         CONFIG: osx_arm64_mpinompipython3.10.____cpython
@@ -83,6 +95,9 @@ jobs:
       osx_arm64_mpinompipython3.14.____cp314:
         CONFIG: osx_arm64_mpinompipython3.14.____cp314
         UPLOAD_PACKAGES: 'True'
+      osx_arm64_mpinompipython3.14.____cp314t:
+        CONFIG: osx_arm64_mpinompipython3.14.____cp314t
+        UPLOAD_PACKAGES: 'True'
       osx_arm64_mpiopenmpipython3.10.____cpython:
         CONFIG: osx_arm64_mpiopenmpipython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -97,6 +112,9 @@ jobs:
         UPLOAD_PACKAGES: 'True'
       osx_arm64_mpiopenmpipython3.14.____cp314:
         CONFIG: osx_arm64_mpiopenmpipython3.14.____cp314
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_mpiopenmpipython3.14.____cp314t:
+        CONFIG: osx_arm64_mpiopenmpipython3.14.____cp314t
         UPLOAD_PACKAGES: 'True'
     maxParallel: 19
   timeoutInMinutes: 360
