@@ -20,6 +20,7 @@ source:
     # Disable complex256 for arm64
     # follow https://github.com/conda-forge/cross-python-feedstock/issues/92
     - bad-numpy-patch.patch   # [osx and arm64]
+    - 0001-Fix-ImportError-in-conda-forge-tests.patch
 
 build:
   skip: true  # [py<=37]
