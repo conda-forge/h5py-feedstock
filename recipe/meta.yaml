@@ -7,6 +7,9 @@
 {% if mpi == 'nompi' %}
 # prefer nompi builds via a build number offset
 {% set build = build + 100 %}
+{% set mpi_prefix = "nompi" %}
+{% else %}
+{% set mpi_prefix = "mpi_" + mpi %}
 {% endif %}
 
 package:
@@ -24,11 +27,6 @@ source:
 build:
   skip: true  # [py<=37]
   number: {{ build }}
-  {% if mpi != 'nompi' %}
-  {% set mpi_prefix = "mpi_" + mpi %}
-  {% else %}
-  {% set mpi_prefix = "nompi" %}
-  {% endif %}
   # add build string so packages can depend on
   # mpi or nompi variants
   # dependencies:
