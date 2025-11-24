@@ -1,5 +1,6 @@
 import os
 import sys
+import sysconfig
 
 os.environ['OMPI_MCA_plm'] = 'isolated'
 os.environ['OMPI_MCA_btl_vader_single_copy_mechanism'] = 'none'
@@ -36,14 +37,27 @@ test_args = []
 if have_mpi:
     test_args.append("--with-mpi")
 
+# Build list of tests to skip
+skip_tests = []
+
+# Skip test_multiprocess on free-threading builds
+is_freethreaded = bool(sysconfig.get_config_var("Py_GIL_DISABLED"))
+if is_freethreaded:
+    skip_tests.append("test_multiprocess")
+
 # HDF5 1.14.4 and 1.14.5 have a regression in unicode handling on windows
 # https://github.com/conda-forge/hdf5-feedstock/issues/240
 # https://github.com/HDFGroup/hdf5/issues/5037
 # https://github.com/h5py/h5py/pull/2520
 if (
-    sys.platform == 'win32' and 
+    sys.platform == 'win32' and
     h5py.h5.get_libversion() in [(1, 14, 4), (1, 14, 5)]
 ):
-    test_args.extend(["-k", '"(not test_unicode_hdf5_python_consistent)"'])
+    skip_tests.append("test_unicode_hdf5_python_consistent")
+
+# Apply test skip filter if any tests should be skipped
+if skip_tests:
+    skip_expr = " and ".join(f"not {test}" for test in skip_tests)
+    test_args.extend(["-k", f'"{skip_expr}"'])
 
 sys.exit(h5py.run_tests(" ".join(test_args)))
