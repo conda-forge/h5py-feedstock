@@ -2,6 +2,7 @@ import os
 import sys
 import sysconfig
 
+os.environ['AWS_REGION'] = 'us-east-2'
 os.environ['OMPI_MCA_plm'] = 'isolated'
 os.environ['OMPI_MCA_btl_vader_single_copy_mechanism'] = 'none'
 os.environ['OMPI_MCA_rmaps_base_oversubscribe'] = 'yes'
@@ -28,10 +29,7 @@ import h5py.h5t
 import h5py.h5z
 import h5py.utils
 
-# verify that mpi builds are built with mpi
-should_have_mpi = os.getenv('mpi', 'nompi') != 'nompi'
 have_mpi = h5py.get_config().mpi
-assert have_mpi == should_have_mpi, "Expected mpi=%r, got %r" % (should_have_mpi, have_mpi)
 
 test_args = []
 if have_mpi:
@@ -44,16 +42,6 @@ skip_tests = []
 is_freethreaded = bool(sysconfig.get_config_var("Py_GIL_DISABLED"))
 if is_freethreaded:
     skip_tests.append("test_multiprocess")
-
-# HDF5 1.14.4 and 1.14.5 have a regression in unicode handling on windows
-# https://github.com/conda-forge/hdf5-feedstock/issues/240
-# https://github.com/HDFGroup/hdf5/issues/5037
-# https://github.com/h5py/h5py/pull/2520
-if (
-    sys.platform == 'win32' and
-    h5py.h5.get_libversion() in [(1, 14, 4), (1, 14, 5)]
-):
-    skip_tests.append("test_unicode_hdf5_python_consistent")
 
 # Apply test skip filter if any tests should be skipped
 if skip_tests:

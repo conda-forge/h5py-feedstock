@@ -71,6 +71,8 @@ test:
     - h5py
   commands:
     - pip check
+    - python -c "import h5py; assert not h5py.get_config().mpi"  # [mpi == 'nompi']
+    - python -c "import h5py; assert h5py.get_config().mpi"  # [mpi != 'nompi']
   requires:
     - pip
     - pytest
