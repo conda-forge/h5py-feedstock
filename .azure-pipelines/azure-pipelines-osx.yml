@@ -152,7 +152,6 @@ jobs:
         CONFIG: osx_arm64_mpiopenmpipython3.14.____cp314t
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
-    maxParallel: 19
   timeoutInMinutes: 360
   variables: {}
 

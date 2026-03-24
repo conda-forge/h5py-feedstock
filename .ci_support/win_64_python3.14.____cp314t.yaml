@@ -11,7 +11,7 @@ hdf5:
 mpi:
 - nompi
 mpich:
-- '4'
+- '5'
 numpy:
 - '2'
 openmpi:
