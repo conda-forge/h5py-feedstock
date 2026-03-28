@@ -1,5 +1,5 @@
 {% set version = "3.16.0" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
@@ -8,6 +8,15 @@
 {% set build = build + 100 %}  # [mpi == 'nompi']
 {% set mpi_prefix = "nompi" %}  # [mpi == 'nompi']
 {% set mpi_prefix = "mpi_" + mpi %}  # [mpi != 'nompi']
+
+{% set tests_to_skip = "_not_a_real_test" %}
+{% set tests_to_skip = tests_to_skip + " or test_multiprocess" %}  # [('cp313t' in str(python)) or ('cp314t' in str(python))]
+
+# https://github.com/h5py/h5py/issues/2850
+{% set tests_to_skip = tests_to_skip + " or test_ros3" %}  # [win]
+
+{% set mpi_pytest_flag = "" %}
+{% set mpi_pytest_flag = "--with-mpi" %}  # [mpi != 'nompi']
 
 package:
   name: h5py
@@ -22,7 +31,6 @@ source:
     - bad-numpy-patch.patch   # [osx and arm64]
 
 build:
-  skip: true  # [py<=37]
   number: {{ build }}
   # add build string so packages can depend on
   # mpi or nompi variants
@@ -69,8 +77,37 @@ requirements:
 test:
   imports:
     - h5py
+    - h5py._conv
+    - h5py._errors
+    - h5py._objects
+    - h5py._proxy
+    - h5py.defs
+    - h5py.h5
+    - h5py.h5a
+    - h5py.h5d
+    - h5py.h5f
+    - h5py.h5fd
+    - h5py.h5g
+    - h5py.h5i
+    - h5py.h5l
+    - h5py.h5o
+    - h5py.h5p
+    - h5py.h5r
+    - h5py.h5s
+    - h5py.h5t
+    - h5py.h5z
+    - h5py.utils
   commands:
+    {% set export = "export" %}   # [unix]
+    {% set export = "set" %}  # [not unix]
+    - {{ export }} AWS_REGION=us-east-2
+    - {{ export }} OMPI_MCA_plm=isolated  # [mpi != 'nompi']
+    - {{ export }} OMPI_MCA_btl_vader_single_copy_mechanism=none  # [mpi != 'nompi']
+    - {{ export }} OMPI_MCA_rmaps_base_oversubscribe=yes  # [mpi != 'nompi']
     - pip check
+    - python -c "import h5py; assert not h5py.get_config().mpi"  # [mpi == 'nompi']
+    - python -c "import h5py; assert h5py.get_config().mpi"      # [mpi != 'nompi']
+    - python -m pytest --pyargs h5py {{ mpi_pytest_flag }} -k "not ({{ tests_to_skip }})"
   requires:
     - pip
     - pytest
