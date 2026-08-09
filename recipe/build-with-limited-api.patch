@@ -1,5 +1,5 @@
 diff --git a/setup.py b/setup.py
-index ac5791f..598277d 100755
+index ac5791f..f6ac347 100755
 --- a/setup.py
 +++ b/setup.py
 @@ -48,11 +48,23 @@ package_data = {'h5py': [], "h5py.tests.data_files": ["*.h5"]}
@@ -7,13 +7,13 @@ index ac5791f..598277d 100755
      package_data['h5py'].append('*.dll')
  
 +SETUP_OPTIONS = {}
-+if setup_build.limited_api_enabled():
++if (LIMITED_API_HEX := setup_build.limited_api_version_hex()) is not None:
 +    # Tag the wheel abi3 so it installs on every CPython >= the limited API
 +    # floor, rather than only the interpreter that built it.
 +    SETUP_OPTIONS['bdist_wheel'] = {
 +        'py_limited_api': 'cp%d%d' % (
-+            (setup_build.LIMITED_API_VERSION_HEX >> 24) & 0xFF,
-+            (setup_build.LIMITED_API_VERSION_HEX >> 16) & 0xFF,
++            (LIMITED_API_HEX >> 24) & 0xFF,
++            (LIMITED_API_HEX >> 16) & 0xFF,
 +        ),
 +    }
 +
@@ -27,10 +27,10 @@ index ac5791f..598277d 100755
  
  # see pyproject.toml for static metadata
 diff --git a/setup_build.py b/setup_build.py
-index 33f56ab..b167a90 100644
+index 33f56ab..674d407 100644
 --- a/setup_build.py
 +++ b/setup_build.py
-@@ -26,6 +26,28 @@ def localpath(*args):
+@@ -26,6 +26,37 @@ def localpath(*args):
      return op.abspath(op.join(op.dirname(__file__), *args))
  
  
@@ -45,33 +45,42 @@ index 33f56ab..b167a90 100644
 +LIMITED_API_VERSION_HEX = 0x030B0000
 +
 +
-+def limited_api_enabled():
-+    """ Whether to build against the limited API. """
++def limited_api_version_hex():
++    """ Limited API version to target, or None to not use it at all. """
 +    if os.environ.get('H5PY_LIMITED_API', '') not in ('1', 'true', 'True'):
-+        return False
++        return None
 +    # The free-threaded build has no stable ABI before CPython 3.15 (PEP 803),
 +    # so it always opts out and gets a version-specific build.
 +    if sysconfig.get_config_var('Py_GIL_DISABLED'):
-+        return False
-+    return True
++        return None
++    # Packagers can pick the floor: conda-forge's python-abi3 package puts
++    # PY_LIMITED_API in the environment to say which version it targets.
++    if version_hex := os.environ.get('PY_LIMITED_API', ''):
++        return int(version_hex, 0)
++    return LIMITED_API_VERSION_HEX
++
++
++def limited_api_enabled():
++    """ Whether to build against the limited API. """
++    return limited_api_version_hex() is not None
 +
 +
  MODULES = ['defs', '_errors', '_objects', '_proxy', 'h5fd', 'h5z',
              'h5', 'h5i', 'h5r', 'utils', '_selector',
              '_conv', 'h5t', 'h5s',
-@@ -131,6 +153,11 @@ class h5py_build_ext(build_ext):
+@@ -131,6 +162,11 @@ class h5py_build_ext(build_ext):
                  if new_text != current_text:
                      target.write_text(new_text, 'utf-8')
  
-+        if limited_api_enabled():
++        if (version_hex := limited_api_version_hex()) is not None:
 +            settings['define_macros'].append(
-+                ('Py_LIMITED_API', hex(LIMITED_API_VERSION_HEX))
++                ('Py_LIMITED_API', hex(version_hex))
 +            )
 +
          settings['define_macros'].append(('NPY_TARGET_VERSION', 'NPY_1_21_API_VERSION'))
          extensions = [cls._make_extension(m, settings) for m in MODULES]
  
-@@ -148,7 +175,8 @@ class h5py_build_ext(build_ext):
+@@ -148,7 +184,8 @@ class h5py_build_ext(build_ext):
          settings = copy.deepcopy(settings)
          settings['libraries'] += EXTRA_LIBRARIES.get(module, [])
  

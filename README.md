@@ -57,6 +57,13 @@ Current build status
                 </a>
               </td>
             </tr><tr>
+              <td>osx_64_hdf51.14.6is_abi3truempimpichpython3.10.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_hdf51.14.6is_abi3truempimpichpython3.10.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>osx_64_hdf51.14.6is_abi3truempimpichpython3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=main">
@@ -64,10 +71,24 @@ Current build status
                 </a>
               </td>
             </tr><tr>
+              <td>osx_64_hdf51.14.6is_abi3truempinompipython3.10.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_hdf51.14.6is_abi3truempinompipython3.10.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>osx_64_hdf51.14.6is_abi3truempinompipython3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_hdf51.14.6is_abi3truempinompipython3.11.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_hdf51.14.6is_abi3truempiopenmpipython3.10.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_hdf51.14.6is_abi3truempiopenmpipython3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -99,6 +120,13 @@ Current build status
                 </a>
               </td>
             </tr><tr>
+              <td>osx_64_hdf52is_abi3truempimpichpython3.10.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_hdf52is_abi3truempimpichpython3.10.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>osx_64_hdf52is_abi3truempimpichpython3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=main">
@@ -106,10 +134,24 @@ Current build status
                 </a>
               </td>
             </tr><tr>
+              <td>osx_64_hdf52is_abi3truempinompipython3.10.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_hdf52is_abi3truempinompipython3.10.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>osx_64_hdf52is_abi3truempinompipython3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_hdf52is_abi3truempinompipython3.11.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_hdf52is_abi3truempiopenmpipython3.10.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_hdf52is_abi3truempiopenmpipython3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -127,6 +169,13 @@ Current build status
                 </a>
               </td>
             </tr><tr>
+              <td>win_64_hdf51.14.6is_abi3truepython3.10.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=main&jobName=win&configuration=win%20win_64_hdf51.14.6is_abi3truepython3.10.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>win_64_hdf51.14.6is_abi3truepython3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=main">
@@ -138,6 +187,13 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=main&jobName=win&configuration=win%20win_64_hdf52is_abi3falsepython3.14.____cp314t" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_hdf52is_abi3truepython3.10.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=402&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/h5py-feedstock?branchName=main&jobName=win&configuration=win%20win_64_hdf52is_abi3truepython3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
