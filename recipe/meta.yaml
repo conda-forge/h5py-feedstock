@@ -140,7 +140,8 @@ test:
     - pip check
     # prove the extensions really are stable-ABI clean, not just named abi3
     - abi3audit $SP_DIR/h5py/*.abi3.so -s -v --assume-minimum-abi3 {{ abi3_min }}  # [unix and is_abi3 and py == 311]
-    - abi3audit %SP_DIR%\h5py\*.pyd -s -v --assume-minimum-abi3 {{ abi3_min }}  # [win and is_abi3 and py == 311]
+    # cmd.exe does not expand globs, so abi3audit would get a literal *.pyd
+    - for %%f in (%SP_DIR%\h5py\*.pyd) do (abi3audit "%%f" -s -v --assume-minimum-abi3 {{ abi3_min }} || exit /b 1)  # [win and is_abi3 and py == 311]
     - python -c "import h5py; assert not h5py.get_config().mpi"  # [mpi == 'nompi']
     - python -c "import h5py; assert h5py.get_config().mpi"      # [mpi != 'nompi']
     - python -m pytest --pyargs h5py {{ mpi_pytest_flag }} -k "not ({{ tests_to_skip }})"
