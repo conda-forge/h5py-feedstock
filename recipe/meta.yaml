@@ -18,6 +18,17 @@
 {% set mpi_pytest_flag = "" %}
 {% set mpi_pytest_flag = "--with-mpi" %}  # [mpi != 'nompi']
 
+# abi3 (CPython stable ABI) builds one binary for every later CPython, which
+# collapses the python axis of the matrix.  3.11 rather than python_min (3.10)
+# because the buffer protocol only entered the stable ABI in 3.11 and h5py
+# uses it in _conv, h5d, h5f and h5p.  The free-threaded build has no stable
+# ABI before CPython 3.15 (PEP 803), and conda-forge already reflects that by
+# setting is_abi3 to false for the *t variants, so those keep building
+# per-version with no extra conditionals here.
+{% set abi3_min = "3.11" %}
+{% set py_tag = "py" ~ py %}
+{% set py_tag = "abi3" %}  # [is_abi3]
+
 package:
   name: h5py
   version: {{ version }}
@@ -29,6 +40,8 @@ source:
     # Disable complex256 for arm64
     # follow https://github.com/conda-forge/cross-python-feedstock/issues/92
     - bad-numpy-patch.patch   # [osx and arm64]
+    # Teach setup_build.py to honour H5PY_LIMITED_API=1
+    - build-with-limited-api.patch
 
 build:
   number: {{ build }}
@@ -38,9 +51,13 @@ build:
   # `pkg * mpi_mpich_*` for mpich
   # `hdf5 * mpi_*` for any mpi
   # `hdf5 * nompi_*` for no mpi
-  string: {{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}
+  string: {{ mpi_prefix }}_{{ py_tag }}h{{ PKG_HASH }}_{{ build }}
+  python_version_independent: true  # [is_abi3]
+  # one abi3 build covers every later CPython, so only build it once
+  skip: true  # [is_abi3 and py != 311]
   script_env:
     - HDF5_HAS_ROS3=1  # [build_platform != target_platform]
+    - H5PY_LIMITED_API=1  # [is_abi3]
 
 requirements:
   build:
@@ -55,6 +72,7 @@ requirements:
     - {{ mpi }}  # [mpi == 'openmpi' and build_platform != target_platform]
   host:
     - python
+    - python-abi3  # [is_abi3]
     - pip
     - setuptools
     - numpy
@@ -65,9 +83,12 @@ requirements:
     - hdf5
     - hdf5 * {{ mpi_prefix }}_*
     - cython >=0.29.31,<4
+    # limited API support landed in Cython 3.1
+    - cython >=3.1,<4  # [is_abi3]
     - pkgconfig
   run:
-    - python
+    - python  # [not is_abi3]
+    - python >={{ abi3_min }}  # [is_abi3]
     - cached-property
     - {{ mpi }}  # [mpi != 'nompi']
     - mpi4py >=3.0  # [mpi != 'nompi']
@@ -105,6 +126,9 @@ test:
     - {{ export }} OMPI_MCA_btl_vader_single_copy_mechanism=none  # [mpi != 'nompi']
     - {{ export }} OMPI_MCA_rmaps_base_oversubscribe=yes  # [mpi != 'nompi']
     - pip check
+    # prove the extensions really are stable-ABI clean, not just named abi3
+    - abi3audit $SP_DIR/h5py/*.abi3.so -s -v --assume-minimum-abi3 {{ abi3_min }}  # [unix and is_abi3]
+    - abi3audit %SP_DIR%\h5py\*.pyd -s -v --assume-minimum-abi3 {{ abi3_min }}  # [win and is_abi3]
     - python -c "import h5py; assert not h5py.get_config().mpi"  # [mpi == 'nompi']
     - python -c "import h5py; assert h5py.get_config().mpi"      # [mpi != 'nompi']
     - python -m pytest --pyargs h5py {{ mpi_pytest_flag }} -k "not ({{ tests_to_skip }})"
@@ -112,6 +136,7 @@ test:
     - pip
     - pytest
     - pytest-mpi
+    - abi3audit  # [is_abi3]
 
 about:
   home: http://www.h5py.org/

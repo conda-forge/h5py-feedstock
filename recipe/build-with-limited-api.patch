@@ -1,0 +1,83 @@
+diff --git a/setup.py b/setup.py
+index ac5791f..598277d 100755
+--- a/setup.py
++++ b/setup.py
+@@ -48,11 +48,23 @@ package_data = {'h5py': [], "h5py.tests.data_files": ["*.h5"]}
+ if os.name == 'nt':
+     package_data['h5py'].append('*.dll')
+ 
++SETUP_OPTIONS = {}
++if setup_build.limited_api_enabled():
++    # Tag the wheel abi3 so it installs on every CPython >= the limited API
++    # floor, rather than only the interpreter that built it.
++    SETUP_OPTIONS['bdist_wheel'] = {
++        'py_limited_api': 'cp%d%d' % (
++            (setup_build.LIMITED_API_VERSION_HEX >> 24) & 0xFF,
++            (setup_build.LIMITED_API_VERSION_HEX >> 16) & 0xFF,
++        ),
++    }
++
+ setup(
+   package_data = package_data,
+   ext_modules = [Extension('h5py.x',['x.c'])],  # To trick build into running build_ext
+   install_requires = RUN_REQUIRES,
+   cmdclass = CMDCLASS,
++  options = SETUP_OPTIONS,
+ )
+ 
+ # see pyproject.toml for static metadata
+diff --git a/setup_build.py b/setup_build.py
+index 33f56ab..b167a90 100644
+--- a/setup_build.py
++++ b/setup_build.py
+@@ -26,6 +26,28 @@ def localpath(*args):
+     return op.abspath(op.join(op.dirname(__file__), *args))
+ 
+ 
++# CPython's limited API / stable ABI ("abi3") lets a single binary serve every
++# later CPython, instead of one build per minor version.  Opt in with
++# H5PY_LIMITED_API=1.
++#
++# 0x030B0000 is 3.11, which is h5py's floor rather than a free choice:
++# PyObject_GetBuffer and the rest of the buffer protocol only entered the
++# stable ABI in 3.11, and h5py uses it in _conv, h5d, h5f and h5p.  The typed
++# memoryview in h5d.read_direct_chunk needs 3.11 for the same reason.
++LIMITED_API_VERSION_HEX = 0x030B0000
++
++
++def limited_api_enabled():
++    """ Whether to build against the limited API. """
++    if os.environ.get('H5PY_LIMITED_API', '') not in ('1', 'true', 'True'):
++        return False
++    # The free-threaded build has no stable ABI before CPython 3.15 (PEP 803),
++    # so it always opts out and gets a version-specific build.
++    if sysconfig.get_config_var('Py_GIL_DISABLED'):
++        return False
++    return True
++
++
+ MODULES = ['defs', '_errors', '_objects', '_proxy', 'h5fd', 'h5z',
+             'h5', 'h5i', 'h5r', 'utils', '_selector',
+             '_conv', 'h5t', 'h5s',
+@@ -131,6 +153,11 @@ class h5py_build_ext(build_ext):
+                 if new_text != current_text:
+                     target.write_text(new_text, 'utf-8')
+ 
++        if limited_api_enabled():
++            settings['define_macros'].append(
++                ('Py_LIMITED_API', hex(LIMITED_API_VERSION_HEX))
++            )
++
+         settings['define_macros'].append(('NPY_TARGET_VERSION', 'NPY_1_21_API_VERSION'))
+         extensions = [cls._make_extension(m, settings) for m in MODULES]
+ 
+@@ -148,7 +175,8 @@ class h5py_build_ext(build_ext):
+         settings = copy.deepcopy(settings)
+         settings['libraries'] += EXTRA_LIBRARIES.get(module, [])
+ 
+-        return Extension('h5py.' + module, sources, **settings)
++        return Extension('h5py.' + module, sources,
++                         py_limited_api=limited_api_enabled(), **settings)
+ 
+     def run(self):
+         """ Distutils calls this method to run the command """
