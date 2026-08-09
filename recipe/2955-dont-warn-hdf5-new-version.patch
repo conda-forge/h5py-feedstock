@@ -1,0 +1,165 @@
+From 90a3479fb860e009968d497f5503e21253ee18a0 Mon Sep 17 00:00:00 2001
+From: Mark Harfouche <mark.harfouche@gmail.com>
+Date: Sun, 9 Aug 2026 09:24:01 -0400
+Subject: [PATCH] Don't warn about ABI-compatible HDF5 versions from 2.0
+ onwards
+
+<details><summary>Claude's draft</summary>
+
+h5py warned on import whenever the runtime HDF5 version differed at all from
+the one it was built against. From HDF5 2.0.0 onwards the HDF Group guarantees
+ABI backwards compatibility within a major version: an application linked
+against X.Y.Z must run without recompilation against any later X.A.B. See
+https://github.com/HDFGroup/hdf5/wiki/HDF5-Version-Numbers-and-Branch-Strategy
+
+So a build against HDF5 2.1.0 running on 2.2.0 is fine, and the warning is
+just noise for anyone whose HDF5 is updated independently of h5py (conda-forge,
+distro packages, ...).
+
+Add `version._hdf5_abi_compatible()` and only warn when the versions really
+may be incompatible:
+
+* the major versions differ, or
+* the running library is older than the one built against (it may be missing
+  symbols and features), or
+* the versions are 1.x and not identical -- 1.x predates the guarantee, its
+  minor number played the role the major number plays now, and the ABI was
+  known to change even between maintenance releases (H5Oget_info* in 1.10.4).
+
+The 1.x behaviour is therefore unchanged.
+
+Resume this Claude session:
+```
+cd /home/mark/git
+claude --resume 782c702d-bf0e-47af-a893-1c9be46936a1
+```
+</details>
+---
+ h5py/__init__.py                    |  4 ++-
+ h5py/tests/test_version.py          | 47 +++++++++++++++++++++++++++++
+ h5py/version.py                     | 25 +++++++++++++++
+ news/hdf5-2-abi-version-warning.rst | 10 ++++++
+ 4 files changed, 85 insertions(+), 1 deletion(-)
+ create mode 100644 h5py/tests/test_version.py
+ create mode 100644 news/hdf5-2-abi-version-warning.rst
+
+diff --git a/h5py/__init__.py b/h5py/__init__.py
+index 159d228b5..88c1d3764 100644
+--- a/h5py/__init__.py
++++ b/h5py/__init__.py
+@@ -32,7 +32,9 @@
+ 
+ from . import version
+ 
+-if version.hdf5_version_tuple != version.hdf5_built_version_tuple:
++if not version._hdf5_abi_compatible(
++    version.hdf5_built_version_tuple, version.hdf5_version_tuple
++):
+     _warn(("h5py is running against HDF5 {0} when it was built against {1}, "
+            "this may cause problems").format(
+             '{0}.{1}.{2}'.format(*version.hdf5_version_tuple),
+diff --git a/h5py/tests/test_version.py b/h5py/tests/test_version.py
+new file mode 100644
+index 000000000..63ec0982c
+--- /dev/null
++++ b/h5py/tests/test_version.py
+@@ -0,0 +1,47 @@
++# This file is part of h5py, a Python interface to the HDF5 library.
++#
++# http://www.h5py.org
++#
++# Copyright 2008-2013 Andrew Collette and contributors
++#
++# License:  Standard 3-clause BSD; see "license.txt" for full license terms
++#           and contributor agreement.
++
++"""
++    Tests for the versioning helpers in h5py.version
++"""
++
++import pytest
++
++from h5py.version import _hdf5_abi_compatible
++
++
++@pytest.mark.parametrize('built, running', [
++    # Identical versions are always fine
++    ((1, 14, 6), (1, 14, 6)),
++    ((2, 0, 0), (2, 0, 0)),
++    # HDF5 promises ABI compatibility with later releases of the same major
++    # version from 2.0 onwards
++    ((2, 0, 0), (2, 0, 1)),
++    ((2, 1, 0), (2, 2, 0)),
++    ((2, 0, 0), (2, 11, 3)),
++])
++def test_abi_compatible(built, running):
++    assert _hdf5_abi_compatible(built, running)
++
++
++@pytest.mark.parametrize('built, running', [
++    # Older libraries may lack symbols h5py was built against
++    ((2, 2, 0), (2, 1, 0)),
++    ((2, 0, 1), (2, 0, 0)),
++    # Nothing is promised across a major version
++    ((2, 0, 0), (3, 0, 0)),
++    ((2, 0, 0), (1, 14, 6)),
++    ((1, 14, 6), (2, 0, 0)),
++    # 1.x predates the ABI compatibility promise
++    ((1, 14, 3), (1, 14, 6)),
++    ((1, 14, 6), (1, 14, 3)),
++    ((1, 12, 3), (1, 14, 3)),
++])
++def test_abi_incompatible(built, running):
++    assert not _hdf5_abi_compatible(built, running)
+diff --git a/h5py/version.py b/h5py/version.py
+index 9d4bde7e6..b2332cbc2 100644
+--- a/h5py/version.py
++++ b/h5py/version.py
+@@ -44,6 +44,31 @@ def __str__(self) -> str:
+ hdf5_version_tuple = _h5.get_libversion()
+ hdf5_version = "%d.%d.%d" % hdf5_version_tuple
+ 
++
++def _hdf5_abi_compatible(built_version, running_version):
++    """Can h5py built against ``built_version`` safely use ``running_version``?
++
++    From 2.0.0 onwards HDF5 guarantees ABI backwards compatibility within a
++    major version: an application linked against X.Y.Z runs without
++    recompilation against any later X.A.B.  See
++    https://github.com/HDFGroup/hdf5/wiki/HDF5-Version-Numbers-and-Branch-Strategy
++
++    HDF5 1.x predates that promise -- its minor number played the role the
++    major number plays now, and the ABI was known to change even between
++    maintenance releases (e.g. H5Oget_info* in 1.10.4) -- so there we only
++    accept an exact match, as h5py always has.
++    """
++    if running_version == built_version:
++        return True
++
++    if built_version[0] < 2:
++        return False
++
++    # The majors must match, and an older library of the same major version may
++    # be missing symbols and features h5py was built against, so only accept
++    # newer ones.
++    return (running_version[0] == built_version[0]) and (running_version > built_version)
++
+ api_version_tuple = (1,8)
+ api_version = "%d.%d" % api_version_tuple
+ 
+diff --git a/news/hdf5-2-abi-version-warning.rst b/news/hdf5-2-abi-version-warning.rst
+new file mode 100644
+index 000000000..c93a3a2bb
+--- /dev/null
++++ b/news/hdf5-2-abi-version-warning.rst
+@@ -0,0 +1,10 @@
++Bug fixes
++---------
++
++* Importing h5py no longer warns that "h5py is running against HDF5 X when it
++  was built against Y" when the two versions are ABI compatible (:pr:`2955`).
++  From 2.0.0 onwards HDF5 guarantees that an application linked against X.Y.Z
++  runs unmodified against any later X.A.B, so a build against e.g. HDF5 2.1.0
++  running on 2.2.0 is now accepted silently. Downgrades, changes of major
++  version, and any mismatch in the 1.x series (which predates that guarantee)
++  still warn as before.
