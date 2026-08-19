@@ -1,5 +1,5 @@
 {% set version = "3.16.0" %}
-{% set build = 3 %}
+{% set build = 4 %}
 
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
@@ -26,9 +26,9 @@ source:
   url: https://github.com/h5py/h5py/archive/{{ version }}.tar.gz
   sha256: 9c3aa5e1fc0c33ae8501a17987af2f986c8ba3ade25da66c78738a5abefea133
   patches:
-    # Disable complex256 for arm64
-    # follow https://github.com/conda-forge/cross-python-feedstock/issues/92
-    - bad-numpy-patch.patch   # [osx and arm64]
+    # https://github.com/conda-forge/hdf5-feedstock/pull/319
+    # https://github.com/h5py/h5py/pull/2955
+    - 2955-dont-warn-hdf5-new-version.patch
 
 build:
   number: {{ build }}

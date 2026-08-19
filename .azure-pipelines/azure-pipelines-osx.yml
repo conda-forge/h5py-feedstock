@@ -371,7 +371,7 @@ jobs:
       osx_arm64_hdf51.14.6mpimpichpython3.10.____cpython:
         CONFIG: osx_arm64_hdf51.14.6mpimpichpython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -381,7 +381,7 @@ jobs:
       osx_arm64_hdf51.14.6mpimpichpython3.11.____cpython:
         CONFIG: osx_arm64_hdf51.14.6mpimpichpython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -391,7 +391,7 @@ jobs:
       osx_arm64_hdf51.14.6mpimpichpython3.12.____cpython:
         CONFIG: osx_arm64_hdf51.14.6mpimpichpython3.12.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -401,7 +401,7 @@ jobs:
       osx_arm64_hdf51.14.6mpimpichpython3.13.____cp313:
         CONFIG: osx_arm64_hdf51.14.6mpimpichpython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -411,7 +411,7 @@ jobs:
       osx_arm64_hdf51.14.6mpimpichpython3.14.____cp314:
         CONFIG: osx_arm64_hdf51.14.6mpimpichpython3.14.____cp314
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -421,7 +421,7 @@ jobs:
       osx_arm64_hdf51.14.6mpimpichpython3.14.____cp314t:
         CONFIG: osx_arm64_hdf51.14.6mpimpichpython3.14.____cp314t
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -431,7 +431,7 @@ jobs:
       osx_arm64_hdf51.14.6mpinompipython3.10.____cpython:
         CONFIG: osx_arm64_hdf51.14.6mpinompipython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -441,7 +441,7 @@ jobs:
       osx_arm64_hdf51.14.6mpinompipython3.11.____cpython:
         CONFIG: osx_arm64_hdf51.14.6mpinompipython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -451,7 +451,7 @@ jobs:
       osx_arm64_hdf51.14.6mpinompipython3.12.____cpython:
         CONFIG: osx_arm64_hdf51.14.6mpinompipython3.12.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -461,7 +461,7 @@ jobs:
       osx_arm64_hdf51.14.6mpinompipython3.13.____cp313:
         CONFIG: osx_arm64_hdf51.14.6mpinompipython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -471,7 +471,7 @@ jobs:
       osx_arm64_hdf51.14.6mpinompipython3.14.____cp314:
         CONFIG: osx_arm64_hdf51.14.6mpinompipython3.14.____cp314
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -481,7 +481,7 @@ jobs:
       osx_arm64_hdf51.14.6mpinompipython3.14.____cp314t:
         CONFIG: osx_arm64_hdf51.14.6mpinompipython3.14.____cp314t
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -491,7 +491,7 @@ jobs:
       osx_arm64_hdf51.14.6mpiopenmpipython3.10.____cpython:
         CONFIG: osx_arm64_hdf51.14.6mpiopenmpipython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -501,7 +501,7 @@ jobs:
       osx_arm64_hdf51.14.6mpiopenmpipython3.11.____cpython:
         CONFIG: osx_arm64_hdf51.14.6mpiopenmpipython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -511,7 +511,7 @@ jobs:
       osx_arm64_hdf51.14.6mpiopenmpipython3.12.____cpython:
         CONFIG: osx_arm64_hdf51.14.6mpiopenmpipython3.12.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -521,7 +521,7 @@ jobs:
       osx_arm64_hdf51.14.6mpiopenmpipython3.13.____cp313:
         CONFIG: osx_arm64_hdf51.14.6mpiopenmpipython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -531,7 +531,7 @@ jobs:
       osx_arm64_hdf51.14.6mpiopenmpipython3.14.____cp314:
         CONFIG: osx_arm64_hdf51.14.6mpiopenmpipython3.14.____cp314
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -541,7 +541,7 @@ jobs:
       osx_arm64_hdf51.14.6mpiopenmpipython3.14.____cp314t:
         CONFIG: osx_arm64_hdf51.14.6mpiopenmpipython3.14.____cp314t
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -551,7 +551,7 @@ jobs:
       osx_arm64_hdf52mpimpichpython3.10.____cpython:
         CONFIG: osx_arm64_hdf52mpimpichpython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -561,7 +561,7 @@ jobs:
       osx_arm64_hdf52mpimpichpython3.11.____cpython:
         CONFIG: osx_arm64_hdf52mpimpichpython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -571,7 +571,7 @@ jobs:
       osx_arm64_hdf52mpimpichpython3.12.____cpython:
         CONFIG: osx_arm64_hdf52mpimpichpython3.12.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -581,7 +581,7 @@ jobs:
       osx_arm64_hdf52mpimpichpython3.13.____cp313:
         CONFIG: osx_arm64_hdf52mpimpichpython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -591,7 +591,7 @@ jobs:
       osx_arm64_hdf52mpimpichpython3.14.____cp314:
         CONFIG: osx_arm64_hdf52mpimpichpython3.14.____cp314
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -601,7 +601,7 @@ jobs:
       osx_arm64_hdf52mpimpichpython3.14.____cp314t:
         CONFIG: osx_arm64_hdf52mpimpichpython3.14.____cp314t
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -611,7 +611,7 @@ jobs:
       osx_arm64_hdf52mpinompipython3.10.____cpython:
         CONFIG: osx_arm64_hdf52mpinompipython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -621,7 +621,7 @@ jobs:
       osx_arm64_hdf52mpinompipython3.11.____cpython:
         CONFIG: osx_arm64_hdf52mpinompipython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -631,7 +631,7 @@ jobs:
       osx_arm64_hdf52mpinompipython3.12.____cpython:
         CONFIG: osx_arm64_hdf52mpinompipython3.12.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -641,7 +641,7 @@ jobs:
       osx_arm64_hdf52mpinompipython3.13.____cp313:
         CONFIG: osx_arm64_hdf52mpinompipython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -651,7 +651,7 @@ jobs:
       osx_arm64_hdf52mpinompipython3.14.____cp314:
         CONFIG: osx_arm64_hdf52mpinompipython3.14.____cp314
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -661,7 +661,7 @@ jobs:
       osx_arm64_hdf52mpinompipython3.14.____cp314t:
         CONFIG: osx_arm64_hdf52mpinompipython3.14.____cp314t
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -671,7 +671,7 @@ jobs:
       osx_arm64_hdf52mpiopenmpipython3.10.____cpython:
         CONFIG: osx_arm64_hdf52mpiopenmpipython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -681,7 +681,7 @@ jobs:
       osx_arm64_hdf52mpiopenmpipython3.11.____cpython:
         CONFIG: osx_arm64_hdf52mpiopenmpipython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -691,7 +691,7 @@ jobs:
       osx_arm64_hdf52mpiopenmpipython3.12.____cpython:
         CONFIG: osx_arm64_hdf52mpiopenmpipython3.12.____cpython
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -701,7 +701,7 @@ jobs:
       osx_arm64_hdf52mpiopenmpipython3.13.____cp313:
         CONFIG: osx_arm64_hdf52mpiopenmpipython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -711,7 +711,7 @@ jobs:
       osx_arm64_hdf52mpiopenmpipython3.14.____cp314:
         CONFIG: osx_arm64_hdf52mpiopenmpipython3.14.____cp314
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
@@ -721,7 +721,7 @@ jobs:
       osx_arm64_hdf52mpiopenmpipython3.14.____cp314t:
         CONFIG: osx_arm64_hdf52mpiopenmpipython3.14.____cp314t
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         free_disk_space: skip
         pagefile_size: 0
